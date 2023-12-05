@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <!-- css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font awe some -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <!-- font-gg -->
+   
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <!-- owl carousel -->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 p-0">
+                <div class="header">
+                    <div class="hidden-icon ">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div class="header-img">
+                        <a href="/"> <img src="images/logo-header.jpg" alt="logo chat"></a>
+                    </div>
+                    <div class="header-input">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm bạn muốn ">
+                        <i class="fa-solid fa-magnifying-glass" onclick="searchProducts()"></i>
+                    </div>
+                    <div class="hotline">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>HOTLINE: <strong>1900 986 882</strong></span>
+                    </div>
+                    <div class="login-register">
+                        <p class="login"><a href="login.html">Đăng nhập</a></p>
+                        <p class="register"><a href="login.html">Đăng ký</a></p>
+                    </div>
+                    <div class="header-cart">
+                        <a href="/cart.html"> <i class="fa-solid fa-cart-shopping cart-icon1"></i></a>
+                        <span>0<sup>đ</sup></span>
+
+                    </div>
+                    <div class="header-cart2">
+                        <a href="/cart.html"><i class="fa-solid fa-bag-shopping cart-icon2">
+                            </i></a>
+                        <strong>0</strong>
+                    </div>
+                    <div class="input-hidden">
+                        <input type="text" placeholder="Tìm kiếm...">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="header-menu">
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="menu-list">
+                        <li class="menu-item1"><a href="/">TRANG CHỦ</a></li>
+                        <li class="menu-item2"><a href="/product.html">SẢN PHẨM</a>
+                            <ul class="menu-child1">
+                                <li><a href="./product.html?type=ÁO SƠ MI">ÁO SƠ MI </a><i
+                                        class="fa-solid fa-caret-right"></i></li>
+                                <li><a href="./product.html?type=ÁO SƠ MI KIỂU">ÁO SƠ MI KIỂU </a><i
+                                        class="fa-solid fa-caret-right"></i></li>
+                                <li><a href="./product.html?type=ÁO THUN">ÁO THUN </a><i
+                                        class="fa-solid fa-caret-right"></i></li>
+                                <li><a href="./product.html?type=ÁO KHOÁC ">ÁO KHOÁC </a><i
+                                        class="fa-solid fa-caret-right"></i></li>
+                                <li><a href="./product.html?type=ÁO MĂNG TÔ ">ÁO MĂNG TÔ </a><i
+                                        class="fa-solid fa-caret-right"></i></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item3"><a href="#">BỘ SƯU TẬP</a>
+                            <ul class="menu-child2">
+                                <li><i class="fa-solid fa-caret-right"></i><a href="#">A DECEMBER TO REMEMBER</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href="#">MID-AUTUMN COLLECTION | HỌA
+                                        NGUYỆT</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href="#">BLAZER BOOM</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href="#">ON STAGE</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href="#">BE UNIQUE</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href="#">EASY 2 WEAR</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item4"><a href="#">SALE</a></li>
+                        <li class="menu-item5"><a href="#">THÔNG TIN</a>
+                            <ul class="menu-child3">
+                                <li><i class="fa-solid fa-caret-right"></i><a href=""> KHÁCH HÀNG THÂN THIẾT</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href=""> GIỚI THIỆU</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href=""> TIN TỨC</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href=""> QUY ĐỊNH ĐỔI TRẢ HÀNG</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href=""> HƯỚNG DẪN MUA HÀNG</a></li>
+                                <li><i class="fa-solid fa-caret-right"></i><a href=""> TƯ VẤN SIZE</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item6"><a href="#">CỬA HÀNG</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slide -->
+    <div class="slide-show owl-carousel owl-theme ">
+        <div class="items"><img src="images/banner.images/banner1.jpeg" alt=""></div>
+        <div class="items"><img src="images/banner.images/banner2.jpeg" alt=""></div>
+        <div class="items"><img src="images/banner.images/banner3.jpeg" alt=""></div>
+        <div class="items"><img src="images/banner.images/banner4.webp" alt=""></div>
+        <div class="items"><img src="images/banner.images/banner5.jpg" alt=""></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="section1">
+                    <h3><a href="#">Top sản phẩm hot nhất tuần</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- option1 -->
+    <div class="option1">
+        <div class="container">
+            <div class="custom-row row " id="option-product">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="more-product">
+                    <span>Mời bạn <a href="#">xem thêm các sản phẩm hot</a>
+                        <p>khác</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="section1">
+                    <h3><a href="#">TOP SẢN PHẨM MỚI NHẤT TUẦN NÀY</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- end-option1 -->
+
+
+    <!-- option2  -->
+    <div class="option2">
+        <div class="container ">
+            <div class="custom-row row " id="option2-product">
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="more-product">
+                    <span>Mời bạn <a href="#">xem thêm các mẫu mới </a>
+                        <p>khác</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 p-0">
+                <div class="news">
+                    <div class="stripe-item1"></div>
+                    <div class="stripe-item2 "></div>
+                    <h3><a href="#">tin tức mỗi ngày</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-0">
+                <div class="news-content text-center">
+                    <i>Hiểu thời trang và thật thời trang mỗi ngày!</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-1 col-md-8 ">
+                <div class="blog-banner">
+                    <div class="blog-banner__img">
+                        <img src="images/blog.img/blog-banner-img.webp" alt="">
+                        <div class="blog-info">
+                            <a class="blog-button" href="#">tin tức</a>
+                            <h4 class="blog-title">
+                                <a href="#">
+                                    CCHAT VÀ THAM VỌNG TRỞ THÀNH THƯƠNG HIỆU THỜI TRANG THIẾT KẾ ĐẠI CHÚNG VƯƠN TẦM QUỐC
+                                    TẾ
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="blog-section">
+                    <h2>bài được xem nhiều nhất</h2>
+                    <div class="blog-item1">
+                        <div class="blog-item__img">
+                            <img src="images/blog.img/blog-item-img1.jpg" alt="">
+                        </div>
+                        <div class="blog-item-info">
+                            <h3 class="title-item"><a href="#">CCHAT RA MẮT CHÍNH SÁCH 03 FREE DÀNH CHO KHÁCH ĐẶT</a>
+                            </h3>
+                            <span class="date-item">27-07-2021</span>
+                            <a class="link-blog" href="#">tin tức</a>
+                        </div>
+
+                    </div>
+                    <div class="blog-item1">
+                        <div class="blog-item__img">
+                            <img src="images/blog.img/blog-item-img2.jpg" alt="">
+                        </div>
+                        <div class="blog-item-info">
+                            <h3 class="title-item"><a href="#">TƯ VẤN SIZE</a></h3>
+                            <span class="date-item">05-02-2020</span>
+                            <a class="link-blog" href="#">tin tức</a>
+                        </div>
+
+                    </div>
+                    <div class="blog-item1">
+                        <div class="blog-item__img">
+                            <img src="images/blog.img/blog-item-img3.jpg" alt="">
+                        </div>
+                        <div class="blog-item-info">
+                            <h3 class="title-item"><a href="#">HƯỚNG DẪN MUA HÀNG </a></h3>
+                            <span class="date-item">09-09-2019</span>
+                            <a class="link-blog" href="#">tin tức</a>
+                        </div>
+
+                    </div>
+                    <div class="blog-item1">
+                        <div class="blog-item__img">
+                            <img src="images/blog.img/blog-item-img4.jpg" alt="">
+                        </div>
+                        <div class="blog-item-info">
+                            <h3 class="title-item"><a href="#">CHÍNH SÁCH ĐỔI TRẢ HÀNG</a></h3>
+                            <span class="date-item">12-10-2021</span>
+                            <a class="link-blog" href="#">tin tức</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="see-more">
+                    <a href="#">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 p-0">
+                <div class="address-store">
+                    <a class="link-address__store" href="#">Mời bạn xem địa chỉ hệ thống cửa hàng</a>
+                </div>
+                <div class="link-product">
+                    <a class="link-product" href="product.html">sản phẩm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section2">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-xl-3">
+                    <div class="phone-store ">
+                        <strong>Gọi mua hàng(8:30-21:30)</strong>
+                        <span><img src="images/icon_phone.jpg" alt="">1900 986 882</span>
+                        <p>Tất cả các ngày trong tuần</p>
+                    </div>
+                </div>
+                <div class="col-6 col-xl-3">
+                    <div class="phone-store">
+                        <strong>Góp ý, khiếu nại(8:30-21:30)</strong>
+                        <span><img src="images/icon_phone.jpg" alt="">1900 986 882</span>
+                        <p>Tất cả các ngày trong tuần</p>
+                    </div>
+                </div>
+                <div class=" col-md-6 col-xl-3 col-12">
+                    <div class="registration-email">
+                        <strong>Đăng ký nhận thông tin mới</strong>
+                        <input type="email" placeholder="Nhập email của bạn tại đây">
+                        <button>ĐĂNG KÝ</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3 col-12  p-0 ps-1">
+                    <div class="info-facebook">
+                        <strong>FACEBOOK FANPAGE</strong>
+                        <div class="facebook-card">
+                            <div class="card-img">
+                                <div class="empty-box"></div>
+                                <img class="banner-info__facebook" src="images/facebook-info.images/banner.jpg" alt="">
+                                <div class="card-logo">
+                                    <a href="#"> <img src="images/logo-header.jpg" alt=""></a>
+                                </div>
+                                <div class="store-name">
+                                    <h3><a href="#">CChat Clothes <i class="fa-solid fa-check"></i></a>
+                                        <p class="line"></p>
+                                    </h3>
+                                    <span>1.485.319 người theo dõi</span>
+                                </div>
+                                <div class="facebook-card__item">
+                                    <div class="follow">
+                                        <a href="#"><i class="fa-brands fa-facebook"></i>
+                                            <span>Theo Dõi Trang</span></a>
+                                    </div>
+                                    <div class="share">
+
+                                        <a href="#"> <i class="fa-solid fa-share"></i>
+                                            <span>chia sẻ</span></a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="video-live">
+
+                            </div>
+                        </div>
+
+                        <div class="app-info">
+                            <a href="#"> <i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"> <i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-menu">
+        <div class="container ">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="footer-menu__list">
+                        <li><a href="#"></a>Tin tức, Khuyến mãi</li>
+                        <li><a href="#"></a>Hướng dẫn mua hàng</li>
+                        <li><a href="#"></a>Chính sách khách hàng thân thiết</li>
+                        <li><a href="#"></a>Hình thức thanh toán</li>
+                        <li><a href="#"></a>Chính sách Đổi/Trả</li>
+                        <li><a href="#"></a>Chính sách giao hàng</li>
+                        <li><a href="#"></a>Chính sách bảo mật</li>
+                        <li><a href="#"></a>Các thông tin khác</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-end">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="address-web__store">
+                        <strong><a href="#"></a>HỆ THỐNG CỬA HÀNG CCHAT</strong>
+                        <strong><a href="#"></a>GIAN HÀNG CCHAT TRÊN SHOPEE</strong>
+                        <strong><a href="#"></a>GIAN HÀNG CCHAT TRÊN LAZADA</strong>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="footer-address__store">
+                        <strong>THÔNG TIN CÔNG TY</strong>
+                        <strong>CÔNG TY TNHH SẢN XUẤT & TMDV TRANG ANH</strong>
+                        <p>Địa chỉ: Số 38, ngõ 27 Lý Sơn, tổ 30, Phường Ngọc Thụy,</p>
+                        <p>Quận Long Biên, Thành phố Hà Nội, Việt Nam</p>
+                        <p>Mã số thuế: 0108731654</p>
+                        <p>Email : cskh@cchatclothes.vn</p>
+                        <p>Phone: 1900 986 882</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="footer-img">
+                        <img src="images/footer-img.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="web-button">
+        <i class="fa-solid fa-chevron-up"></i>
+        <span>TOP</span>
+    </div>
+    <div class="web-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-messenger"
+            viewBox="0 0 16 16">
+            <path
+                d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z" />
+        </svg>
+    </div>
+    <div class="web-icon2">
+        <i class="fa-solid fa-phone"></i>
+    </div>
+
+    <script src="./lib/axios.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- jQuery -->
+  
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- owl carausel.js -->
+    <script src="js/index.js"></script>
+
+
+
+</body>
+
+</html>
