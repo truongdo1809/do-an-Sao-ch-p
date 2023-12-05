@@ -409,6 +409,7 @@ p {
   padding: 15px 0;
   text-align: center;
   background-color: #8bc34a;
+  cursor: pointer;
 }
 .add-cart a {
   font-size: 17px !important;
@@ -421,6 +422,7 @@ p {
   padding: 10px 0;
   margin-top: 10px;
   background-color: #d61c1f;
+  cursor: pointer;
 }
 .buy-now a {
   color: #fff !important;
