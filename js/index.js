@@ -65,8 +65,20 @@ const products = (data) => {
                     <h2>${product.title}</h2>
              </a>
                 <div class="price">
-                    <span class="price-sale">${product.priceSale}<sup>đ</sup></span>
-                    <span class="price-product">${product.price}<sup>đ</sup></span>
+                <span class="price-sale">${product.priceSale
+                  .toLocaleString("vi-VN", {
+                    style: "currency",
+                    currency: "VND",
+                  })
+                  .replace("₫", "")}<sup>đ</sup></span>
+
+                    <span class="price-product">${product.price
+                      .toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })
+                      .replace("₫", "")}<sup>đ</sup></span>
+
                 </div>
                 <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
             </div>

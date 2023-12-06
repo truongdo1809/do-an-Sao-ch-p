@@ -317,13 +317,16 @@ p {
   display: block;
   padding: 15px 20px;
   background-color: #fafafa;
+ 
 }
 .product-price2 span {
   font-size: 32px;
   color: #e32124;
   font-weight: 500;
   margin-left: 20px;
+ 
 }
+
 .product-price2 p {
   color: #696969;
   font-size: 15px;
@@ -635,7 +638,7 @@ p {
 }
 .price sup {
   position: relative;
-  right:0;
+  right:5px;
 }
 .price-sale {
   font-size: 15px;

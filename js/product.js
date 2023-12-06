@@ -35,8 +35,14 @@ $(function () {
                 <h2>${product.title}</h2>
               </a>
               <div class="price">
-                <span class="price-sale">${product.priceSale}<sup>đ</sup></span>
-                <span class="price-product">${product.price}<sup>đ</sup></span>
+              <span class="price-sale">${product.priceSale
+                .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+                .replace("₫", "")}<sup>đ</sup></span>
+
+              <span class="price-product">${product.price
+                .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+                .replace("₫", "")}<sup>đ</sup></span>
+
               </div>
               <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
             </div>
@@ -56,39 +62,31 @@ $(function () {
   };
 
   const selectElement = document.querySelector(".navbar-option");
-
-if (selectElement) {
-  selectElement.addEventListener("change", (event) => {
-    const selectedOption = event.target.value.toLowerCase();
-    let sortOrder;
-
-    switch (selectedOption) {
-      case "giá giảm dần":
-        sortOrder = "desc";
-        break;
-      case "giá tăng dần":
-        sortOrder = "asc";
-        break;
-      default:
-        sortOrder = "null";
-    }
-
-    selectElement.value = selectedOption;
-
-    const newURL = `https://api-products-tau.vercel.app/products?sort=price&_order=${sortOrder}`;
-    getApi(newURL);
-  });
-}
-//  code không báo lỗi nhưng không có gì xảy ra kèm theo đó value trong ô input không hiện ra mặc dù option còn đó
-
-
-
-
-
+  if (selectElement) {
+    selectElement.addEventListener("change", (event) => {
+      const selectedOption = event.target.value.toLowerCase();
+      let sortOrder;
+      switch (selectedOption) {
+        case "giá giảm dần":
+          sortOrder = "desc";
+          break;
+        case "giá tăng dần":
+          sortOrder = "asc";
+          break;
+        default:
+          sortOrder = "null";
+      }
+      selectElement.value = selectedOption;
+      const newURL = `https://api-products-tau.vercel.app/products?sort=price&_order=${sortOrder}`;
+      getApi(newURL);
+    });
+  }
+  //  code không báo lỗi nhưng không có gì xảy ra kèm theo đó value trong ô input không hiện ra mặc dù option còn đó
 
   updateNavbarTitle(type);
   getApi(URL_API);
 });
+
 
 const webButtonEL = document.querySelector(".web-button");
 const webIconEl = document.querySelector(".web-icon");

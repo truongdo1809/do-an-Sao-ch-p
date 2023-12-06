@@ -382,7 +382,7 @@ p {
 }
 .price sup {
   position: relative;
-  right: 0;
+  right: 5px;
 }
 .price-sale {
   font-size: 15px;

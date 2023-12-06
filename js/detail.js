@@ -21,18 +21,51 @@ const products = (data) => {
   <h1>${data.title}</h1>
 </div>
 <div class="product-price2">
-  <p>${data.price}<sup>đ</sup></p>
-  <span>${data.priceSale}<sup>đ</sup></span>
+<p>${(data.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', '')}<sup>đ</sup></p>
+  <span>${(data.priceSale).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', '')}<sup>đ</sup></span>
 </div>`;
 
   const productTitle = document.querySelector(".product-title");
   productTitle.innerHTML = data.title;
   const productType = document.querySelector(".product-type");
   productType.innerHTML = `<a href="./product.html"></a>${data.type} <i class="fa-solid fa-caret-right"></i>`;
+
+
+  const addProductToLocalStorage = (data) => {
+    const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
+
+    const existingProductIndex = existingProducts.findIndex(product => product.id === data.id);
+
+    if (existingProductIndex !== -1) {
+      existingProducts[existingProductIndex].quantity++;
+    } else {
+      existingProducts.push({
+        id: data.id,
+        name: data.title,
+        price: data.priceSale,
+        quantity: 1,
+        size: "M",
+      });
+    }
+
+    localStorage.setItem("products", JSON.stringify(existingProducts));
+
+    console.log("Product added to localStorage:", existingProducts);
+  };
+
+  const addCart = document.querySelector(".add-cart");
+
+  if (addCart) {
+    addCart.addEventListener("click", function () {
+      addProductToLocalStorage(data);
+    });
+  } else {
+    console.error("some thing wrong");
+  }
 };
 
-//  call api chạy slide
 
+//  call api chạy slide
 
 const URL_SLIDER = `https://api-products-tau.vercel.app/products`;
 const shuffleArray = (array) => {
@@ -48,7 +81,6 @@ const getApi2 = async (URL_API) => {
     const shuffledData = shuffleArray(response.data);
     const slicedData = shuffledData.slice(0, 10);
     products2(slicedData);
-    console.log(response.data);
   } catch (error) {
     console.error("something wrong", error);
   }
@@ -60,33 +92,56 @@ const products2 = (data) => {
   const productSlide = document.querySelector("#product-slide");
   let HTML = "";
   data.forEach((product) => {
-    HTML += /*html*/ `
-      <div class="item">
-        <div class="product">
-          <div class="product-img">
-            <a href="./detail.html?id=${product.id}">
-              <img class="default-img" src="${product.img}" alt="">
-              <img class="hover-img" src="${product.imgHover}" alt="">
-            </a>
+      HTML += /*html*/ `
+    <div class="item">
+      <div class="product">
+        <div class="product-img">
+          <a href="./detail.html?id=${product.id}">
+            <img class="default-img" src="${product.img}" alt="">
+            <img class="hover-img" src="${product.imgHover}" alt="">
+          </a>
+        </div>
+        <div class="product-info">
+          <a href="#" class="name-product">
+            <h2>${product.title}</h2>
+          </a>
+          <div class="price">
+            <span class="price-sale">${(product.priceSale).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', '')}<sup>đ</sup></span>
+            <span class="price-product">${(product.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', '')}<sup>đ</sup></span>
           </div>
-          <div class="product-info">
-            <a href="#" class="name-product">
-              <h2>${product.title}</h2>
-            </a>
-            <div class="price">
-              <span class="price-sale">${product.priceSale}<sup>đ</sup></span>
-              <span class="price-product">${product.price}<sup>đ</sup></span>
-            </div>
-            <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
-          </div>
+          <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
         </div>
       </div>
-    `;
+    </div>
+  `;
   });
   productSlide.innerHTML = HTML;
+  $("#product-slide").owlCarousel({
+      autoplayTimeout: 4000,
+      autoplaySpeed: 1000,
+      dotsSpeed: 1000,
+      loop: true,
+  
+      margin: 24,
+      nav: false,
+      autoplay: true,
+      responsive: {
+          0: {
+              items: 2,
+          },
+          768: {
+              items: 3,
+          },
+          992: {
+              items: 4,
+          },
+          1200: {
+              items: 5,
+          },
+      },
+  });
 };
 
-//  đã render sản phẩm nhưng slide chưa chạy
 
 // sự kiện tăng giảm số lượng sản phẩm
 const increaseBtn = document.querySelector(".increase");
@@ -139,13 +194,13 @@ function searchProducts() {
           }
         })
         .catch(function (error) {
-          console.error("Error:", error);
+          console.error("something wrong:", error);
         });
     });
   }
 }
-$("#searchInput").keypress(function (event) {
-  if (event.which === 13) {
+$("#search-input").on("keypress", function (event) {
+  if (event.key === "Enter") {
     event.preventDefault();
     searchProducts();
   }
@@ -153,49 +208,6 @@ $("#searchInput").keypress(function (event) {
 
 
 // search có hoạt động nhưng khi click thì lại render ra hết tất cả sản phẩm thay vì render ra sản phẩm có kí tự hoặc title trùng với dữ liệu người dùng đã nhập vào
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function () {
-  $(".owl-carousel").owlCarousel();
-});
-$(".owl-carousel").owlCarousel({
-  autoplayTimeout: 4000,
-  autoplaySpeed: 1000,
-  dotsSpeed: 1000,
-
-  loop: true,
-  margin: 100,
-  nav: false,
-  autoplay: true,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 1,
-    },
-    1000: {
-      items: 1,
-    },
-  },
-});
-
 
 
 
