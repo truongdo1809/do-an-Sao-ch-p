@@ -26,7 +26,7 @@ function scrollToTop() {
   document.documentElement.scrollTop = 0;
 }
 webButtonEL.addEventListener("click", scrollToTop);
-
+let totalPrice = 0;
 const displayCart = () => {
   const cartContainer = document.querySelector("#cart-form");
   HTML = ``;
@@ -41,24 +41,51 @@ const displayCart = () => {
 
     HTML += `
     <tr class="cart-item">
-     <i class="fa-solid fa-xmark delete-product"></i>
-   
-     <td class="product-name">${product.name}</td>
-
+  <td> <i class="fa-solid fa-xmark delete-product"></i></td>
+    <td class="product-name">${product.name}</td>
      <td class="product-sezi">${product.size}</td>
-
      <td class="cart-item-right">
         <span class="product-price">
             ${formattedPrice}
         </span>
-     </td>
-     <td class="product-quantity"><input type="number" value="${product.quantity}" min="1" max="100"></td>
+        </td>
+        <td class="product-quantity"><input type="number" value="${product.quantity}" min="1" max="100"></td>
+        
+        <td class="total-price">${(product.price * product.quantity).toLocaleString("vi-VN",{ style: "currency", currency: "VND" })}</td>
+        </tr>
+        `;
+        cartContainer.innerHTML = HTML;
+        totalPrice += product.price * product.quantity;
+      });
+    };
+    displayCart();
+const updateTotal = () => {
+  const cartRows = document.querySelectorAll(".cart-item");
+  cartRows.forEach((cartRow) => {
+    const priceElement = cartRow.querySelector(".product-price");
+    const quantityElement = cartRow.querySelector(".product-quantity");
+    const price = parseFloat(priceElement.textContent);
+    const quantity = parseInt(quantityElement.value);
 
-    <td class="total-price">${(product.price * product.quantity).toLocaleString("vi-VN",{ style: "currency", currency: "VND" })}</td>
-    </tr>
-    `;
-
-    cartContainer.innerHTML = HTML;
+    if (!isNaN(price) && !isNaN(quantity)) {
+      totalPrice += price;
+    }
   });
-};
-displayCart();
+
+
+  const formattedTotalPrice = totalPrice.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
+
+  });
+
+  
+
+  document.querySelector(".pay-cart .total-price").textContent = formattedTotalPrice;
+  document.querySelector(".pay-cart5 .total-price").textContent = formattedTotalPrice;
+
+  document.querySelector(".header-cart span").textContent = formattedTotalPrice;
+document.querySelector(".header-cart2 strong").textContent = cartRows.length;
+
+}
+updateTotal();

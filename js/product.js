@@ -3,10 +3,7 @@ $(function () {
   let sortBy = null;
   const urlParams = new URLSearchParams(window.location.search);
   type = urlParams.get("type");
-  const URL_API = `https://api-products-tau.vercel.app/products${
-    type ? `?type=${type}` : ""
-  }`;
-
+  const URL_API = `https://api-products-tau.vercel.app/products${type ? `?type=${type}` : ""}`;
   const getApi = async (URL_API) => {
     try {
       const response = await axios.get(URL_API);
@@ -19,7 +16,6 @@ $(function () {
   const products = (data) => {
     const productsList = document.querySelector("#products");
     let HTML = ``;
-
     data.forEach((product) => {
       HTML += /*html*/ `
         <div class="col-6 col-xl-3 col-md-3">
@@ -50,7 +46,6 @@ $(function () {
         </div>
       `;
     });
-
     productsList.innerHTML = HTML;
   };
 
@@ -66,23 +61,11 @@ $(function () {
     selectElement.addEventListener("change", (event) => {
       const selectedOption = event.target.value.toLowerCase();
       let sortOrder;
-      switch (selectedOption) {
-        case "giá giảm dần":
-          sortOrder = "desc";
-          break;
-        case "giá tăng dần":
-          sortOrder = "asc";
-          break;
-        default:
-          sortOrder = "null";
-      }
       selectElement.value = selectedOption;
       const newURL = `https://api-products-tau.vercel.app/products?sort=price&_order=${sortOrder}`;
       getApi(newURL);
     });
   }
-  //  code không báo lỗi nhưng không có gì xảy ra kèm theo đó value trong ô input không hiện ra mặc dù option còn đó
-
   updateNavbarTitle(type);
   getApi(URL_API);
 });

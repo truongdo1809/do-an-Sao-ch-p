@@ -27,6 +27,7 @@ p {
 .hidden-icon {
   font-size: 30px;
   display: none;
+  cursor: pointer;
 }
 
 .header-img img {
@@ -309,6 +310,12 @@ p {
 .cart table {
   width: 100%;
 }
+.table-cart {
+  border-collapse: separate;
+  border-spacing:0 20px;
+ 
+}
+
 tbody {
   width: 100%;
 }
@@ -347,15 +354,22 @@ tbody {
 
 .cart-item {
   text-align: center;
-  border: 1px solid #969696;
+  border: 1px solid #333;
   position: relative;
   background-color: #f2f2f2;
 }
+.cart-item i{
+  cursor: pointer;
+}
+
 .cart-item td:nth-child(1) {
   text-align: left !important;
 }
 .cart-item td:nth-child(2) {
   text-align: left !important;
+}
+.product-name{
+  padding-left: 30px;
 }
 .product-name span {
   color: #666;
@@ -389,6 +403,7 @@ tbody {
   display: flex;
   justify-content: space-between;
   margin-right: 10px;
+  margin-bottom: 50px;
 }
 .history-back i {
   font-size: 11px;
@@ -435,6 +450,7 @@ tbody {
   padding: 10px;
   margin-bottom: 15px;
   width: 100%;
+  margin-left: 20px;
 }
 .sidebar-title span {
   display: inline-block;
@@ -702,18 +718,21 @@ tbody {
   font-weight: 600;
   line-height: 36px;
 }
-.video-live {
-  width: 100%;
-  height: 200px;
-  background-color: rgb(239, 237, 237);
-}
+
 .section2 {
   margin-bottom: 20px;
 }
 .app-info {
-  margin-top: 200px;
+  margin-top: 100px;
   text-align: left;
+  display: flex;
+  align-items: center;
 }
+.app-info svg {
+  width: 60px;
+  height: 60px;
+}
+
 .app-info i {
   margin-left: 10px;
 }
@@ -1063,9 +1082,7 @@ tbody {
   .card-img .banner-info__facebook {
     width: 310px;
   }
-  .video-live {
-    width: 310px;
-  }
+ 
   .empty-box {
     width: 310px;
   }
@@ -1084,16 +1101,3 @@ tbody {
     margin-top: 10px !important;
   }
 }
-
-
-
-
-
-table {
-  border-collapse: separate;
-  border-spacing: 0 10px;
-}
-tbody tr {
-  margin-bottom: 10px;
-}
-
