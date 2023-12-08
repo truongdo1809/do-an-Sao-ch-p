@@ -489,8 +489,6 @@ table{
   border: 1px solid #000;
   background-color: #f2f2f2;
   position: relative;
- 
- 
 }
 .product-quantity{
   padding: 10px 20px;
@@ -1098,6 +1096,12 @@ tbody{
   .web-icon2 {
     display: block;
   }
+  .product-price{
+    display: none;
+  }
+  .product-sezi{
+    display: none;
+  }
 }
 @media screen and (min-width: 992px) {
   .header-cart2 {
@@ -1162,7 +1166,9 @@ tbody{
   .header-menu {
     display: none;
   }
-
+.pull{
+  margin-bottom: 50px;
+}
   .footer-img img {
     width: 250px;
     height: 114px;

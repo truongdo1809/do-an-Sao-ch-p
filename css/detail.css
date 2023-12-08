@@ -318,14 +318,12 @@ p {
   display: block;
   padding: 15px 20px;
   background-color: #fafafa;
- 
 }
 .product-price2 span {
   font-size: 32px;
   color: #e32124;
   font-weight: 500;
   margin-left: 20px;
- 
 }
 
 .product-price2 p {
@@ -415,11 +413,11 @@ p {
   background-color: #8bc34a;
   cursor: pointer;
 }
-.add-cart a {
-  font-size: 17px !important;
+.add-cart span {
+  font-size: 17px;
   font-weight: 700;
-
-  color: #fff !important;
+  cursor: pointer;
+  color: #fff;
 }
 .buy-now {
   text-align: center;
@@ -428,15 +426,17 @@ p {
   background-color: #d61c1f;
   cursor: pointer;
 }
-.buy-now a {
-  color: #fff !important;
-  font-size: 17px !important;
+.buy-now span {
+  color: #fff ;
+  font-size: 17px;
   font-weight: 700;
+  cursor: pointer;
 }
 .buy-now p {
   color: #fff;
   font-size: 13px;
   font-weight: 600;
+  cursor: pointer;
 }
 .like-share {
   display: flex;
@@ -639,7 +639,7 @@ p {
 }
 .price sup {
   position: relative;
-  right:5px;
+  right: 5px;
 }
 .price-sale {
   font-size: 15px;
@@ -929,11 +929,11 @@ p {
   display: flex;
   align-items: center;
 }
-.app-info svg{
+.app-info svg {
   width: 60px;
   height: 60px;
-  }
-  
+}
+
 .app-info i {
   margin-left: 10px;
 }

@@ -121,7 +121,6 @@ const products2 = (data) => {
       autoplaySpeed: 1000,
       dotsSpeed: 1000,
       loop: true,
-  
       margin: 24,
       nav: false,
       autoplay: true,

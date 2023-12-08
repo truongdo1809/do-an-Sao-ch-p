@@ -309,6 +309,7 @@ p {
 }
 .cart table {
   width: 100%;
+  max-width: 100%;
 }
 .table-cart {
   border-collapse: separate;
@@ -907,6 +908,9 @@ tbody {
 }
 
 @media screen and (max-width: 768px) {
+  .cart-sidebar{
+    margin-left: 0;
+  }
   .address-store a {
     font-size: 10px !important;
     padding: 10px 30px;
@@ -940,6 +944,12 @@ tbody {
   .cart-sidebar {
     margin-top: 20px;
     margin-bottom: 30px;
+  }
+  .product-price{
+    display: none;
+  }
+  .product-sezi{
+    display: none;
   }
 }
 @media screen and (min-width: 992px) {

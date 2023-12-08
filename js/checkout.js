@@ -49,16 +49,20 @@ const displayCart = () => {
             ${formattedPrice}
         </span>
         </td>
-        <td class="product-quantity"><input type="number" value="${product.quantity}" min="1" max="100"></td>
+        <td class="product-quantity"><input type="number" value="${
+          product.quantity
+        }" min="1" max="100"></td>
         
-        <td class="total-price">${(product.price * product.quantity).toLocaleString("vi-VN",{ style: "currency", currency: "VND" })}</td>
+        <td class="total-price">${(
+          product.price * product.quantity
+        ).toLocaleString("vi-VN", { style: "currency", currency: "VND" })}</td>
         </tr>
         `;
-        cartContainer.innerHTML = HTML;
-        totalPrice += product.price * product.quantity;
-      });
-    };
-    displayCart();
+    cartContainer.innerHTML = HTML;
+    totalPrice += product.price * product.quantity;
+  });
+};
+displayCart();
 const updateTotal = () => {
   const cartRows = document.querySelectorAll(".cart-item");
   cartRows.forEach((cartRow) => {
@@ -71,21 +75,16 @@ const updateTotal = () => {
       totalPrice += price;
     }
   });
-
-
   const formattedTotalPrice = totalPrice.toLocaleString("vi-VN", {
     style: "currency",
     currency: "VND",
-
   });
-
-  
-
-  document.querySelector(".pay-cart .total-price").textContent = formattedTotalPrice;
-  document.querySelector(".pay-cart5 .total-price").textContent = formattedTotalPrice;
+  document.querySelector(".pay-cart .total-price").textContent =
+    formattedTotalPrice;
+  document.querySelector(".pay-cart5 .total-price").textContent =
+    formattedTotalPrice;
 
   document.querySelector(".header-cart span").textContent = formattedTotalPrice;
-document.querySelector(".header-cart2 strong").textContent = cartRows.length;
-
-}
+  document.querySelector(".header-cart2 strong").textContent = cartRows.length;
+};
 updateTotal();

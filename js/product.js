@@ -1,13 +1,24 @@
 $(function () {
   let type = null;
-  let sortBy = null;
   const urlParams = new URLSearchParams(window.location.search);
   type = urlParams.get("type");
-  const URL_API = `https://api-products-tau.vercel.app/products${type ? `?type=${type}` : ""}`;
+  const URL_API = `https://api-products-tau.vercel.app/products${
+    type ? `?type=${type}` : ""
+  }`;
   const getApi = async (URL_API) => {
     try {
       const response = await axios.get(URL_API);
       products(response.data);
+    } catch (error) {
+      console.error("something wrong:", error);
+    }
+  };
+
+  const getApi2 = async (newURL) => {
+    try {
+      const response = await axios.get(newURL);
+      products(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error("something wrong:", error);
     }
@@ -58,18 +69,19 @@ $(function () {
 
   const selectElement = document.querySelector(".navbar-option");
   if (selectElement) {
-    selectElement.addEventListener("change", (event) => {
+    selectElement.addEventListener("change", async (event) => {
       const selectedOption = event.target.value.toLowerCase();
-      let sortOrder;
+      let sortOrder = selectedOption;
       selectElement.value = selectedOption;
       const newURL = `https://api-products-tau.vercel.app/products?sort=price&_order=${sortOrder}`;
-      getApi(newURL);
+      await  getApi2(newURL);
+      console.log(getApi2(newURL));
+
     });
   }
   updateNavbarTitle(type);
   getApi(URL_API);
 });
-
 
 const webButtonEL = document.querySelector(".web-button");
 const webIconEl = document.querySelector(".web-icon");

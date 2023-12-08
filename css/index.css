@@ -455,7 +455,7 @@ p {
 }
 .blog-banner__img img {
   cursor: pointer;
-  /* height: 425px; */
+  height: 425px;
   object-fit: cover;
   width: 100%;
 }
