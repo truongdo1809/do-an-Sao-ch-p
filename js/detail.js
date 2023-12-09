@@ -31,20 +31,23 @@ const products = (data) => {
   productType.innerHTML = `<a href="./product.html"></a>${data.type} <i class="fa-solid fa-caret-right"></i>`;
 
 
-  const addProductToLocalStorage = (data) => {
+  const addProductToLocalStorage = (data,quantity,size) => {
     const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
 
     const existingProductIndex = existingProducts.findIndex(product => product.id === data.id);
 
     if (existingProductIndex !== -1) {
-      existingProducts[existingProductIndex].quantity++;
+      existingProducts[existingProductIndex].size=size;
+
+      existingProducts[existingProductIndex].quantity += quantity;
+
     } else {
       existingProducts.push({
         id: data.id,
         name: data.title,
         price: data.priceSale,
-        quantity: 1,
-        size: "M",
+        quantity: quantity,
+        size: size,
       });
     }
 
@@ -55,15 +58,53 @@ const products = (data) => {
 
   const addCart = document.querySelector(".add-cart");
 
-  if (addCart) {
-    addCart.addEventListener("click", function () {
-      addProductToLocalStorage(data);
-    });
-  } else {
-    console.error("some thing wrong");
-  }
-};
+  addCart.addEventListener("click", function () {
+  if (!selectedSize) {
+      alert("vui lòng chọn sezi")
+    } else {
+      addProductToLocalStorage(data,currentValue,selectedSize);
+    }
+  });
 
+
+}
+
+  const sizeContainer = document.querySelector(".sezi-product2");
+  const sizeSpans = sizeContainer.querySelectorAll("span");
+
+  let selectedSize = null;
+
+  sizeSpans.forEach(span => {
+    span.addEventListener("click", function (event) {
+      const clickedSize = event.target.textContent;
+      console.log("Selected size:", clickedSize);
+
+      selectedSize = clickedSize;
+    })
+  });
+
+// sự kiện tăng giảm số lượng sản phẩm
+const increaseBtn = document.querySelector(".increase");
+const decreaseBtn = document.querySelector(".decrease");
+const valueSpan = document.querySelector(".amount-value");
+
+let currentValue = 1;
+
+function updateValue() {
+  valueSpan.textContent = currentValue;
+}
+
+decreaseBtn.addEventListener("click", function () {
+  currentValue++;
+  updateValue();
+});
+
+increaseBtn.addEventListener("click", function () {
+  if (currentValue > 1) {
+    currentValue--;
+    updateValue();
+  }
+});
 
 //  call api chạy slide
 
@@ -142,28 +183,6 @@ const products2 = (data) => {
 };
 
 
-// sự kiện tăng giảm số lượng sản phẩm
-const increaseBtn = document.querySelector(".increase");
-const decreaseBtn = document.querySelector(".decrease");
-const valueSpan = document.querySelector(".amount-value");
-
-let currentValue = 1;
-
-function updateValue() {
-  valueSpan.textContent = currentValue;
-}
-
-decreaseBtn.addEventListener("click", function () {
-  currentValue++;
-  updateValue();
-});
-
-increaseBtn.addEventListener("click", function () {
-  if (currentValue > 1) {
-    currentValue--;
-    updateValue();
-  }
-});
 
 //  sự kiện người dùng nhập dữ liệu vào ô tìm kiếm
 function searchProducts() {
@@ -207,14 +226,6 @@ $("#search-input").on("keypress", function (event) {
 
 
 // search có hoạt động nhưng khi click thì lại render ra hết tất cả sản phẩm thay vì render ra sản phẩm có kí tự hoặc title trùng với dữ liệu người dùng đã nhập vào
-
-
-
-
-
-
-
-
 
 //  hiệu ứng hover và focus của sezi sản phẩm
 function toggleBorder(element) {
