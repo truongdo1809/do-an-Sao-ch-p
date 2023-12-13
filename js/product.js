@@ -13,7 +13,6 @@ $(function () {
       console.error("something wrong:", error);
     }
   };
-
   const getApi2 = async (newURL) => {
     try {
       const response = await axios.get(newURL);
@@ -54,6 +53,7 @@ $(function () {
             </div>
           </div>
         </div>
+        
       `;
     });
     productsList.innerHTML = HTML;
@@ -70,10 +70,8 @@ $(function () {
       const selectedOption = event.target.value.toLowerCase();
       let sortOrder = selectedOption;
       selectElement.value = selectedOption;
-      const newURL = `https://api-products-tau.vercel.app/products?sort=price&_order=${sortOrder}`;
+      const newURL = `https://api-products-tau.vercel.app/products?_sort=priceSale&_order=${sortOrder}`;
       await  getApi2(newURL);
-      console.log(getApi2(newURL));
-
     });
   }
   updateNavbarTitle(type);

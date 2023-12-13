@@ -352,14 +352,19 @@ tbody {
   top: 2px;
   right: 2px;
 }
-
 .cart-item {
   text-align: center;
   border: 1px solid #333;
   position: relative;
   background-color: #f2f2f2;
+  position: relative;
 }
+
 .cart-item i{
+  font-size: 20px;
+  position: absolute;
+  top: 3px;
+  right: 7px;
   cursor: pointer;
 }
 
@@ -479,6 +484,13 @@ tbody {
 }
 .cart-payment img:nth-child(5) {
   margin-top: 15px;
+}
+.cart-message{
+  padding-top: 20px;
+  text-align: center;
+  color: #d61c1f;
+  font-weight: 600;
+ 
 }
 /* footer */
 /* address shop */
@@ -724,7 +736,7 @@ tbody {
   margin-bottom: 20px;
 }
 .app-info {
-  margin-top: 100px;
+  /* margin-top: 100px; */
   text-align: left;
   display: flex;
   align-items: center;

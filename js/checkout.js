@@ -1,4 +1,3 @@
-
 let totalPrice = 0;
 const displayCart = () => {
   const cartContainer = document.querySelector("#cart-form");
@@ -24,7 +23,7 @@ const displayCart = () => {
         </td>
         <td class="product-quantity"><input type="number" value="${
           product.quantity
-        }" min="1" max="100"></td>
+        }" min="1" max="61"></td>
         
         <td class="total-price">${(
           product.price * product.quantity
@@ -36,16 +35,17 @@ const displayCart = () => {
   });
 };
 displayCart();
-const updateTotal = () => {
-  const cartRows = document.querySelectorAll(".cart-item");
-  cartRows.forEach((cartRow) => {
-    const priceElement = cartRow.querySelector(".product-price");
-    const quantityElement = cartRow.querySelector(".product-quantity");
-    const price = parseFloat(priceElement.textContent);
-    const quantity = parseInt(quantityElement.value);
 
+// cập nhật tổng tiến của sản phẩm
+const updateTotal = () => {
+  totalPrice = 0;
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+
+  products.forEach((product) => {
+    const price = product.price;
+    const quantity = product.quantity;
     if (!isNaN(price) && !isNaN(quantity)) {
-      totalPrice += price;
+      totalPrice += price * quantity;
     }
   });
   const formattedTotalPrice = totalPrice.toLocaleString("vi-VN", {
@@ -56,8 +56,59 @@ const updateTotal = () => {
     formattedTotalPrice;
   document.querySelector(".pay-cart5 .total-price").textContent =
     formattedTotalPrice;
-  document.querySelector(".quantity2-product").textContent = cartRows.length;
+  document.querySelector(".quantity2-product").textContent = products.length;
   document.querySelector(".header-cart span").textContent = formattedTotalPrice;
-  document.querySelector(".header-cart2 strong").textContent = cartRows.length;
+  document.querySelector(".header-cart2 strong").textContent = products.length;
 };
 updateTotal();
+
+
+// xóa sản phẩm 
+const deleteProduct = (index) => {
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+  if (index >= 0 && index < products.length) {
+    products.splice(index, 1);
+    localStorage.setItem("products", JSON.stringify(products));
+  }
+};
+const cartContainer = document.querySelector("#cart-form");
+cartContainer.addEventListener("click", function (event) {
+  const deleteIcon = event.target.closest("i.delete-product");
+  if (deleteIcon) {
+    const productRow = deleteIcon.closest(".cart-item");
+    const index = Array.from(cartContainer.children).indexOf(productRow);
+    if (confirm("Bạn có muốn xóa sản phẩm này?")) {
+      deleteProduct(index);
+      displayCart();
+      updateTotal();
+      location.reload();
+    }
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    if (products.length === 0) {
+      alert("giỏ hàng trống xin mời bạn tiếp tục mua sắm");
+      window.location.href = "./index.html";
+    }
+  }
+});
+
+//  sự kiện người dùng ấn vào nút thanh toán 
+function deleteAllProducts() {
+  localStorage.removeItem("products");
+}
+function displaySuccessMessage() {
+  alert("Bạn đã thanh toán thành công! mời bạn tiếp tục mua sắm <3");
+}
+function redirectToHomepage() {
+  window.location.href = "./index.html";
+}
+const pullRight = document.querySelector(".pull-right")
+
+ pullRight .addEventListener("click", function (event) {
+    event.preventDefault();
+
+    deleteAllProducts();
+
+    displaySuccessMessage();
+
+    redirectToHomepage();
+  });

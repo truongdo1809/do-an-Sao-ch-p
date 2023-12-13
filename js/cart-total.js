@@ -1,26 +1,22 @@
-
 let totalPrice = 0;
 const displayCart = () => {
   const products = JSON.parse(localStorage.getItem("products")) || [];
   products.forEach((product) => {
     totalPrice += product.price * product.quantity;
-    document.querySelector(".header-cart2 strong").textContent = products.length;
+    document.querySelector(".header-cart2 strong").textContent =
+      products.length;
   });
 };
-
 displayCart();
-
 //total
 const updateTotal = () => {
-  const cartRows = document.querySelectorAll(".cart-item");
-  cartRows.forEach((cartRow) => {
-    const priceElement = cartRow.querySelector(".product-price");
-    const quantityElement = cartRow.querySelector(".quantity-product");
-    const price = parseFloat(priceElement.textContent);
-    const quantity = parseInt(quantityElement.value);
-
+  totalPrice = 0;
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+  products.forEach((product) => {
+    const price = product.price;
+    const quantity = product.quantity;
     if (!isNaN(price) && !isNaN(quantity)) {
-      totalPrice += price;
+      totalPrice += price * quantity;
     }
   });
   const formattedTotalPrice = totalPrice.toLocaleString("vi-VN", {

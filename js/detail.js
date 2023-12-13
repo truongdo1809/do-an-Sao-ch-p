@@ -21,8 +21,12 @@ const products = (data) => {
   <h1>${data.title}</h1>
 </div>
 <div class="product-price2">
-<p>${(data.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', '')}<sup>đ</sup></p>
-  <span>${(data.priceSale).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', '')}<sup>đ</sup></span>
+<p>${data.price
+    .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+    .replace("₫", "")}<sup>đ</sup></p>
+  <span>${data.priceSale
+    .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+    .replace("₫", "")}<sup>đ</sup></span>
 </div>`;
 
   const productTitle = document.querySelector(".product-title");
@@ -30,17 +34,17 @@ const products = (data) => {
   const productType = document.querySelector(".product-type");
   productType.innerHTML = `<a href="./product.html"></a>${data.type} <i class="fa-solid fa-caret-right"></i>`;
 
+  const addProductToLocalStorage = (data, quantity, size) => {
+    const existingProducts = JSON.parse(localStorage.getItem("products")) || [];
 
-  const addProductToLocalStorage = (data,quantity,size) => {
-    const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
-
-    const existingProductIndex = existingProducts.findIndex(product => product.id === data.id);
+    const existingProductIndex = existingProducts.findIndex(
+      (product) => product.id === data.id
+    );
 
     if (existingProductIndex !== -1) {
-      existingProducts[existingProductIndex].size=size;
+      existingProducts[existingProductIndex].size = size;
 
       existingProducts[existingProductIndex].quantity += quantity;
-
     } else {
       existingProducts.push({
         id: data.id,
@@ -55,33 +59,68 @@ const products = (data) => {
 
     console.log("Product added to localStorage:", existingProducts);
   };
+  
 
+
+
+  
+//  sự kiện khi người dùng chưa chọn sai thì hiện 1 dòng thông báo 
+// khi người dùng đã chọn thì cho phép thêm sản phẩm
   const addCart = document.querySelector(".add-cart");
+  const buyNow = document.querySelector(".buy-now");
 
-  addCart.addEventListener("click", function () {
-  if (!selectedSize) {
-      alert("vui lòng chọn sezi")
+  const notificationEl = document.querySelector(".Notification");
+  const notificationEl2 = document.querySelector(".Notification2");
+
+  buyNow.addEventListener("mouseenter", function () {
+    if (!selectedSize) {
+      notificationEl2.style.display = "inline-block";
+    }
+  });
+  buyNow.addEventListener("mouseleave", function () {
+    notificationEl2.style.display = "none";
+  });
+
+  buyNow.addEventListener("click", function () {
+    if (!selectedSize) {
+      notificationEl2.style.display = "inline-block";
     } else {
-      addProductToLocalStorage(data,currentValue,selectedSize);
+      addProductToLocalStorage(data, currentValue, selectedSize);
+      window.location.href = "./cart.html";
     }
   });
 
-
-}
-
-  const sizeContainer = document.querySelector(".sezi-product2");
-  const sizeSpans = sizeContainer.querySelectorAll("span");
-
-  let selectedSize = null;
-
-  sizeSpans.forEach(span => {
-    span.addEventListener("click", function (event) {
-      const clickedSize = event.target.textContent;
-      console.log("Selected size:", clickedSize);
-
-      selectedSize = clickedSize;
-    })
+  addCart.addEventListener("mouseenter", function () {
+    if (!selectedSize) {
+      notificationEl.style.display = "inline-block";
+    }
   });
+  addCart.addEventListener("mouseleave", function () {
+    notificationEl.style.display = "none";
+  });
+  addCart.addEventListener("click", function () {
+    if (!selectedSize) {
+      notificationEl.style.display = "inline-block";
+    } else {
+      addProductToLocalStorage(data, currentValue, selectedSize);
+     
+    }
+  });
+};
+//  lấy ra sezi sản phẩm
+const sizeContainer = document.querySelector(".sezi-product2");
+const sizeSpans = sizeContainer.querySelectorAll("span");
+
+let selectedSize = null;
+
+sizeSpans.forEach((span) => {
+  span.addEventListener("click", function (event) {
+    const clickedSize = event.target.textContent;
+    console.log("Selected size:", clickedSize);
+
+    selectedSize = clickedSize;
+  });
+});
 
 // sự kiện tăng giảm số lượng sản phẩm
 const increaseBtn = document.querySelector(".increase");
@@ -133,7 +172,7 @@ const products2 = (data) => {
   const productSlide = document.querySelector("#product-slide");
   let HTML = "";
   data.forEach((product) => {
-      HTML += /*html*/ `
+    HTML += /*html*/ `
     <div class="item">
       <div class="product">
         <div class="product-img">
@@ -147,8 +186,12 @@ const products2 = (data) => {
             <h2>${product.title}</h2>
           </a>
           <div class="price">
-            <span class="price-sale">${(product.priceSale).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', '')}<sup>đ</sup></span>
-            <span class="price-product">${(product.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', '')}<sup>đ</sup></span>
+            <span class="price-sale">${product.priceSale
+              .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+              .replace("₫", "")}<sup>đ</sup></span>
+            <span class="price-product">${product.price
+              .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+              .replace("₫", "")}<sup>đ</sup></span>
           </div>
           <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
         </div>
@@ -158,72 +201,69 @@ const products2 = (data) => {
   });
   productSlide.innerHTML = HTML;
   $("#product-slide").owlCarousel({
-      autoplayTimeout: 4000,
-      autoplaySpeed: 1000,
-      dotsSpeed: 1000,
-      loop: true,
-      margin: 24,
-      nav: false,
-      autoplay: true,
-      responsive: {
-          0: {
-              items: 2,
-          },
-          768: {
-              items: 3,
-          },
-          992: {
-              items: 4,
-          },
-          1200: {
-              items: 5,
-          },
+    autoplayTimeout: 4000,
+    autoplaySpeed: 1000,
+    dotsSpeed: 1000,
+    loop: true,
+    margin: 24,
+    nav: false,
+    autoplay: true,
+    responsive: {
+      0: {
+        items: 2,
       },
+      768: {
+        items: 3,
+      },
+      992: {
+        items: 4,
+      },
+      1200: {
+        items: 5,
+      },
+    },
   });
 };
 
+// //  sự kiện người dùng nhập dữ liệu vào ô tìm kiếm
+// function searchProducts() {
+//   // Lấy giá trị từ ô tìm kiếm
+//   const searchTerm = document.querySelector("#search-input").value;
 
-
-//  sự kiện người dùng nhập dữ liệu vào ô tìm kiếm
-function searchProducts() {
-  // Lấy giá trị từ ô tìm kiếm
-  const searchTerm = document.querySelector("#search-input").value;
-
-  // Kiểm tra xem ô tìm kiếm có dữ liệu hay không
-  if (searchTerm.trim() !== "") {
-    $(function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const title = urlParams.get("title");
-      const titleParam = title ? `?title=${title}` : '';
-      const URL_API = `https://api-products-tau.vercel.app/products${titleParam}`;
-      axios
-        .get(URL_API)
-        .then(function (response) {
-          // Lọc các sản phẩm có kí tự hoặc có tên trùng với dữ liệu người dùng nhập vào
-          const filteredProducts = response.data.filter(function (products) {
-            return products.title
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase());
-          });
-          if (filteredProducts.length > 0) {
-            window.location.href = "./product.html";
-          } else {
-            console.log("Không tìm thấy sản phẩm.");
-          }
-        })
-        .catch(function (error) {
-          console.error("something wrong:", error);
-        });
-    });
-  }
-}
-$("#search-input").on("keypress", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    searchProducts();
-  }
-});
-
+//   // Kiểm tra xem ô tìm kiếm có dữ liệu hay không
+//   if (searchTerm.trim() !== "") {
+//     $(function () {
+//       const urlParams = new URLSearchParams(window.location.search);
+//       const title = urlParams.get("title");
+//       const titleParam = title ? `?title=${title}` : "";
+//       const URL_API = `https://api-products-tau.vercel.app/products${titleParam}`;
+//       axios
+//         .get(URL_API)
+//         .then(function (response) {
+//           // Lọc các sản phẩm có kí tự hoặc có tên trùng với dữ liệu người dùng nhập vào
+//           const filteredProducts = response.data.filter(function (products) {
+//             return products.title
+//               .toLowerCase()
+//               .includes(searchTerm.toLowerCase());
+//           });
+//           if (filteredProducts.length > 0) {
+//             window.location.href = "./product.html";
+//           } else {
+//             console.log("Không tìm thấy sản phẩm.");
+//           }
+//         })
+//         .catch(function (error) {
+//           console.error("something wrong:", error);
+//         });
+//     });
+//   }
+// }
+// $("#search-input").on("keypress", function (event) {
+//   if (event.key === "Enter") {
+//     event.preventDefault();
+//     searchProducts();
+//   }
+// });
 
 // search có hoạt động nhưng khi click thì lại render ra hết tất cả sản phẩm thay vì render ra sản phẩm có kí tự hoặc title trùng với dữ liệu người dùng đã nhập vào
 

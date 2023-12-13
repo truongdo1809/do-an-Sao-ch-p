@@ -38,10 +38,22 @@ const products = (data) => {
                 <a href="#" class="name-product">
                     <h2>${product.title}</h2>
              </a>
-                <div class="price">
-                    <span class="price-sale">${product.priceSale}<sup>đ</sup></span>
-                    <span class="price-product">${product.price}<sup>đ</sup></span>
-                </div>
+             <div class="price">
+             <span class="price-sale">${product.priceSale
+               .toLocaleString("vi-VN", {
+                 style: "currency",
+                 currency: "VND",
+               })
+               .replace("₫","")}<sup>đ</sup></span>
+
+                 <span class="price-product">${product.price
+                   .toLocaleString("vi-VN", {
+                     style: "currency",
+                     currency: "VND",
+                   })
+                   .replace("₫", "")}<sup>đ</sup></span>
+
+             </div>
                 <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
             </div>
         </div>
@@ -49,7 +61,6 @@ const products = (data) => {
     `;
     HTML1 += HTML;
   });
-
   shuffledData2.forEach((product) => {
     const HTML = /*html*/ `
     <div class="custom-col col-6 col-xl-2 col-md-4">
@@ -90,7 +101,6 @@ const products = (data) => {
   productsList.innerHTML = HTML1;
   productsList2.innerHTML = HTML2;
 };
-
 $(document).ready(function () {
   $(".owl-carousel").owlCarousel();
 });

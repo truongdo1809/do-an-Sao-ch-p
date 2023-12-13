@@ -501,8 +501,8 @@ table {
 }
 .cart-item td:nth-child(1) {
   position: absolute;
-  right: 0;
-  top: -5px;
+  right: 3px;
+  top: -3px;
   cursor: pointer;
 }
 .product-name {
@@ -882,7 +882,7 @@ tbody {
   margin-bottom: 20px;
 }
 .app-info {
-  margin-top: 100px;
+
   text-align: left;
   display: flex;
   align-items: center;
