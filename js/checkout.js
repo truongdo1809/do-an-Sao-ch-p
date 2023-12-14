@@ -13,7 +13,7 @@ const displayCart = () => {
 
     HTML += `
     <tr class="cart-item">
-  <td> <i class="fa-solid fa-xmark delete-product"></i></td>
+  <td> </td>
     <td class="product-name">${product.name}</td>
      <td class="product-sezi">${product.size}</td>
      <td class="cart-item-right">
@@ -21,9 +21,7 @@ const displayCart = () => {
             ${formattedPrice}
         </span>
         </td>
-        <td class="product-quantity"><input type="number" value="${
-          product.quantity
-        }" min="1" max="61"></td>
+        <td class="product-quantity"><span>${product.quantity}</span></td>
         
         <td class="total-price">${(
           product.price * product.quantity
@@ -62,36 +60,35 @@ const updateTotal = () => {
 };
 updateTotal();
 
+// xóa sản phẩm
+// const deleteProduct = (index) => {
+//   const products = JSON.parse(localStorage.getItem("products")) || [];
+//   if (index >= 0 && index < products.length) {
+//     products.splice(index, 1);
+//     localStorage.setItem("products", JSON.stringify(products));
+//   }
+// };
+// const cartContainer = document.querySelector("#cart-form");
+// cartContainer.addEventListener("click", function (event) {
+//   const deleteIcon = event.target.closest("i.delete-product");
+//   if (deleteIcon) {
+//     const productRow = deleteIcon.closest(".cart-item");
+//     const index = Array.from(cartContainer.children).indexOf(productRow);
+//     if (confirm("Bạn có muốn xóa sản phẩm này?")) {
+//       deleteProduct(index);
+//       displayCart();
+//       updateTotal();
+//       location.reload();
+//     }
+//     const products = JSON.parse(localStorage.getItem("products")) || [];
+//     if (products.length === 0) {
+//       alert("giỏ hàng trống xin mời bạn tiếp tục mua sắm");
+//       window.location.href = "./index.html";
+//     }
+//   }
+// });
 
-// xóa sản phẩm 
-const deleteProduct = (index) => {
-  const products = JSON.parse(localStorage.getItem("products")) || [];
-  if (index >= 0 && index < products.length) {
-    products.splice(index, 1);
-    localStorage.setItem("products", JSON.stringify(products));
-  }
-};
-const cartContainer = document.querySelector("#cart-form");
-cartContainer.addEventListener("click", function (event) {
-  const deleteIcon = event.target.closest("i.delete-product");
-  if (deleteIcon) {
-    const productRow = deleteIcon.closest(".cart-item");
-    const index = Array.from(cartContainer.children).indexOf(productRow);
-    if (confirm("Bạn có muốn xóa sản phẩm này?")) {
-      deleteProduct(index);
-      displayCart();
-      updateTotal();
-      location.reload();
-    }
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    if (products.length === 0) {
-      alert("giỏ hàng trống xin mời bạn tiếp tục mua sắm");
-      window.location.href = "./index.html";
-    }
-  }
-});
-
-//  sự kiện người dùng ấn vào nút thanh toán 
+//  sự kiện người dùng ấn vào nút thanh toán
 function deleteAllProducts() {
   localStorage.removeItem("products");
 }
@@ -101,14 +98,62 @@ function displaySuccessMessage() {
 function redirectToHomepage() {
   window.location.href = "./index.html";
 }
-const pullRight = document.querySelector(".pull-right")
+const pullRight = document.querySelector(".pull-right");
+const checkoutForm = document.getElementById("checkout-form");
 
- pullRight .addEventListener("click", function (event) {
-    event.preventDefault();
+pullRight.addEventListener("click", function (event) {
+  event.preventDefault();
 
+  if (validateForm()) {
     deleteAllProducts();
-
     displaySuccessMessage();
-
     redirectToHomepage();
+  } else {
+    alert("Vui lòng điền đầy đủ thông tin trong form.");
+  }
+});
+checkoutForm.addEventListener("submit", function (event) {
+  if (!validateForm()) {
+    event.preventDefault();
+    displaySuccessMessage();
+   
+  }
+});
+
+function validateForm() {
+  const formInputs = document.querySelectorAll("#checkout-form input");
+  let isValid = true;
+
+  formInputs.forEach((input) => {
+    const parentDiv = input.parentElement;
+    const requiredMessage = parentDiv.querySelector(".required-message");
+
+    if (input.required && !input.value.trim()) {
+      if (requiredMessage) {
+        requiredMessage.innerHTML =
+          'Trường này bắt buộc.<i class="fa-solid fa-caret-down"></i>';
+        requiredMessage.style.display = "inline";
+      }
+      isValid = false;
+    } else {
+      if (requiredMessage) {
+        requiredMessage.textContent = "";
+        requiredMessage.style.display = "none";
+      }
+    }
+    input.addEventListener('input', function () {
+      if (requiredMessage) {
+        requiredMessage.style.display = 'none';
+      }
+    });
   });
+
+}
+
+// sự kiện focus vào ô input
+document.addEventListener('DOMContentLoaded', function () {
+  const radioInputs = document.querySelectorAll('.payments-option input[type="radio"]');
+  radioInputs.forEach(function (input) {
+    input.checked = true; 
+  });
+});

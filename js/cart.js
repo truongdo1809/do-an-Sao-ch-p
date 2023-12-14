@@ -3,6 +3,7 @@ $(document).ready(function () {
   function checkCartEmpty() {
     if ($("#cart-form").is(":empty")) {
       $(".cart-product").hide();
+      // $(".cart-sidebar").hide();
       $(".cart-product").after(
         '<p class="cart-message">Chưa có sản phẩm nào trong giỏ hàng!</p>'
       );
@@ -85,6 +86,8 @@ const updateTotal = () => {
   });
   document.querySelector(".temporary-price").textContent = formattedTotalPrice;
   document.querySelector(".header-cart span").textContent = formattedTotalPrice;
+  document.querySelector(".header-cart2 strong").textContent = products.length;
+
 };
 displayCart();
 updateTotal();

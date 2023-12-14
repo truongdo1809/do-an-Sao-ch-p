@@ -123,7 +123,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-xl-7">
-                <form action="">
+                <form action="" name="form-ship" id="checkout-form">
                     <div class="cart-sidebar">
                         <h2>THÔNG TIN GIAO HÀNG</h2>
                         <div class="form-card">
@@ -133,7 +133,11 @@
                                     <span>*</span>:
                                 </div>
                                 <div class="form-card-input ">
-                                    <input type="text" placeholder="Họ và tên">
+                                    <input type="text" placeholder="Họ và tên" required>
+                                    <div class="Notification"> <div class="required-message"
+                                            style="display: none;">Trường này bắt buộc.<i
+                                                class="fa-solid fa-caret-down"></i></div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-card1">
@@ -141,8 +145,12 @@
                                     <p>Điện thoại</p>
                                     <span>*</span>:
                                 </div>
-                                <div class="form-card-input  ">
-                                    <input type="text" placeholder="VD:09499999999">
+                                <div class="form-card-input2">
+                                    <input type="number" placeholder="VD:09499999999" required>
+                                    <div class="Notification"> <div class="required-message"
+                                        style="display: none;">Trường này bắt buộc.<i
+                                            class="fa-solid fa-caret-down"></i></div>
+                                </div>
                                 </div>
                             </div>
                             <div class="form-card1">
@@ -150,8 +158,12 @@
                                     <p>Email</p>
                                     <span>*</span>:
                                 </div>
-                                <div class="form-card-input  ">
-                                    <input type="email" placeholder="Nhập email của bạn">
+                                <div class="form-card-input3  ">
+                                    <input type="email" placeholder="Nhập email của bạn" required>
+                                    <div class="Notification"> <div class="required-message"
+                                        style="display: none;">Trường này bắt buộc.<i
+                                            class="fa-solid fa-caret-down"></i></div>
+                                </div>
                                 </div>
                             </div>
                             <div class="form-card1">
@@ -213,8 +225,12 @@
                                     <p>Địa chỉ chi tiết</p>
                                     <span>*</span>:
                                 </div>
-                                <div class="form-card-input  ">
-                                    <input type="text" placeholder="Địa chỉ chi tiết">
+                                <div class="form-card-input4  ">
+                                    <input type="text" placeholder="Địa chỉ chi tiết" required>
+                                    <div class="Notification"> <div class="required-message"
+                                        style="display: none;">Trường này bắt buộc.<i
+                                            class="fa-solid fa-caret-down"></i></div>
+                                </div>
                                 </div>
                             </div>
                             <div class="form-card1">
@@ -232,8 +248,8 @@
                 <div class="payments">
                     <h2>HÌNH THỨC THANH TOÁN</h2>
                     <label class="payments-option">
-                        <div> <input type="radio" name="payment_method"><span>Thanh toán khi nhận sản phẩm</span></div>
                         <div> <input type="radio" name="payment_method"><span>Thanh toán chuyển khoản</span></div>
+                        <div> <input type="radio" name="payment_method"><span>Thanh toán khi nhận sản phẩm</span></div>
                     </label>
                 </div>
             </div>
@@ -292,11 +308,12 @@
                 </div>
                 <div class="pull">
                     <div class="pull-right">
-                         <button>Thanh toán ></button>
+                        <button form="form-ship" onclick="validateForm()">Thanh toán ></button>
                     </div>
                     <div class="pull-left">
                         <a href="./index.html">
-                            <span><< Tiếp tục mua hàng </span>
+                            <span>
+                                << Tiếp tục mua hàng </span>
                         </a>
                     </div>
                 </div>

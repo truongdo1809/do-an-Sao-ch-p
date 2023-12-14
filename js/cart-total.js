@@ -1,14 +1,4 @@
 let totalPrice = 0;
-const displayCart = () => {
-  const products = JSON.parse(localStorage.getItem("products")) || [];
-  products.forEach((product) => {
-    totalPrice += product.price * product.quantity;
-    document.querySelector(".header-cart2 strong").textContent =
-      products.length;
-  });
-};
-displayCart();
-//total
 const updateTotal = () => {
   totalPrice = 0;
   const products = JSON.parse(localStorage.getItem("products")) || [];
@@ -24,5 +14,6 @@ const updateTotal = () => {
     currency: "VND",
   });
   document.querySelector(".header-cart span").textContent = formattedTotalPrice;
+  document.querySelector(".header-cart2 strong").textContent = products.length;
 };
 updateTotal();
