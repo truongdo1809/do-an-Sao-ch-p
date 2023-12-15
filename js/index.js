@@ -7,7 +7,6 @@ const shuffleArray = (array) => {
   }
   return array;
 };
-
 const getApi = async (URL_API) => {
   const response = await axios.get(URL_API);
   const shuffledData = shuffleArray(response.data);
@@ -17,13 +16,11 @@ getApi(URL_API);
 const products = (data) => {
   const productsList = document.querySelector("#option-product");
   const productsList2 = document.querySelector("#option2-product");
-
   let HTML1 = ``;
   let HTML2 = ``;
   // silce để tránh 2 mảng lấy sản phẩm giống nhau
   const shuffledData1 = shuffleArray(data.slice(0, 9));
   const shuffledData2 = shuffleArray(data.slice(11, 24));
-
   shuffledData1.forEach((product) => {
     const HTML = /*html*/ `
     <div class="custom-col col-6 col-xl-2 col-md-4">
