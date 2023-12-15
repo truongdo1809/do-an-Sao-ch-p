@@ -76,9 +76,67 @@ $(function () {
   }
   updateNavbarTitle(type);
   getApi(URL_API);
-  
-  
+
+  let searchInput = document.querySelector(".header-input input");
+
+  searchInput.addEventListener("input", function () {
+    console.log(searchInput.value);
+    let txtSearch = searchInput.value.trim().toLowerCase();
+    let listProduct = document.querySelectorAll(".product");
+    listProduct.forEach((item) => {
+      console.log(item.innerText);
+      if(item.innerText.toLowerCase().includes(txtSearch)){
+        item.classList.remove("hide")
+      }else{
+        item.classList.add("hide")
+      };
+
+
+
+    });
+  });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // search
 // async function getApi3() {
 //   const LIMIT = 8;

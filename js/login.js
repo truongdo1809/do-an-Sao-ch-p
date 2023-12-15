@@ -21,3 +21,10 @@ const tabLogin = () => {
   });
 }
 tabLogin();
+
+
+// const searchInput = document.querySelector(".search-inp")
+// const searchButton  = document.querySelector(".button-addon2")
+// searchButton.addEventListener("clcik",function(){
+//   localStorage.setItem()
+// })

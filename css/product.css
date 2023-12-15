@@ -1075,7 +1075,9 @@ p {
 }
 
 
-
+.hide{
+  display: none;
+}
 
 
 
