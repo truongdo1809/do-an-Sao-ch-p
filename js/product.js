@@ -71,9 +71,41 @@ $(function () {
       let sortOrder = selectedOption;
       selectElement.value = selectedOption;
       const newURL = `https://api-products-tau.vercel.app/products?_sort=priceSale&_order=${sortOrder}`;
-      await  getApi2(newURL);
+      await getApi2(newURL);
     });
   }
   updateNavbarTitle(type);
   getApi(URL_API);
+  // search
+  
+  async function getApi3() {
+    const LIMIT = 8;
+    const url = new URL(window.location.href);
+    const search = url.searchParams.get("search");
+    const page = url.searchParams.get("page") || 1;
+    const skip = (page - 1) * LIMIT;
+    const res = await fetch(
+      `https://api-products-tau.vercel.app/products${
+        search ? "/search?q=" + search + "&" : "?"
+      }skip=${skip}&limit=${LIMIT}`
+    );
+    
+    try {
+      const json = await res.json();
+      const filteredProducts = Array.isArray(json)
+        ? json.filter((product) =>
+            product.title.toLowerCase().includes(search.toLowerCase())
+          )
+        : [];
+  
+      products(response.data);
+      console.log(products);
+    } catch (error) {
+      console.error("Error parsing JSON:", error);
+    }
+  }
+  
+  window.onload = function () {
+    getApi3();
+  };
 });

@@ -112,14 +112,7 @@ pullRight.addEventListener("click", function (event) {
     alert("Vui lòng điền đầy đủ thông tin trong form.");
   }
 });
-checkoutForm.addEventListener("submit", function (event) {
-  if (!validateForm()) {
-    event.preventDefault();
-    displaySuccessMessage();
-   
-  }
-});
-
+// sự kiện check dữ liệu form
 function validateForm() {
   const formInputs = document.querySelectorAll("#checkout-form input");
   let isValid = true;
@@ -130,8 +123,7 @@ function validateForm() {
 
     if (input.required && !input.value.trim()) {
       if (requiredMessage) {
-        requiredMessage.innerHTML =
-          'Trường này bắt buộc.<i class="fa-solid fa-caret-down"></i>';
+        
         requiredMessage.style.display = "inline";
       }
       isValid = false;
@@ -147,7 +139,7 @@ function validateForm() {
       }
     });
   });
-
+  return isValid;
 }
 
 // sự kiện focus vào ô input

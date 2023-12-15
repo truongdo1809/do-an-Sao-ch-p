@@ -61,15 +61,7 @@ const products = (data) => {
 
   //  update tổng tiền sản phẩm
   let totalPrice = 0;
-  // const displayCart = () => {
-  //   const products = JSON.parse(localStorage.getItem("products")) || [];
-  //   products.forEach((product) => {
-  //     totalPrice += product.price * product.quantity;
-  //     document.querySelector(".header-cart2 strong").textContent =
-  //       products.length;
-  //   });
-  // };
-  // displayCart();
+ 
   //total
   const updateTotal = () => {
     totalPrice = 0;
@@ -252,48 +244,6 @@ const products2 = (data) => {
     },
   });
 };
-
-// //  sự kiện người dùng nhập dữ liệu vào ô tìm kiếm
-// function searchProducts() {
-//   // Lấy giá trị từ ô tìm kiếm
-//   const searchTerm = document.querySelector("#search-input").value;
-
-//   // Kiểm tra xem ô tìm kiếm có dữ liệu hay không
-//   if (searchTerm.trim() !== "") {
-//     $(function () {
-//       const urlParams = new URLSearchParams(window.location.search);
-//       const title = urlParams.get("title");
-//       const titleParam = title ? `?title=${title}` : "";
-//       const URL_API = `https://api-products-tau.vercel.app/products${titleParam}`;
-//       axios
-//         .get(URL_API)
-//         .then(function (response) {
-//           // Lọc các sản phẩm có kí tự hoặc có tên trùng với dữ liệu người dùng nhập vào
-//           const filteredProducts = response.data.filter(function (products) {
-//             return products.title
-//               .toLowerCase()
-//               .includes(searchTerm.toLowerCase());
-//           });
-//           if (filteredProducts.length > 0) {
-//             window.location.href = "./product.html";
-//           } else {
-//             console.log("Không tìm thấy sản phẩm.");
-//           }
-//         })
-//         .catch(function (error) {
-//           console.error("something wrong:", error);
-//         });
-//     });
-//   }
-// }
-// $("#search-input").on("keypress", function (event) {
-//   if (event.key === "Enter") {
-//     event.preventDefault();
-//     searchProducts();
-//   }
-// });
-
-// search có hoạt động nhưng khi click thì lại render ra hết tất cả sản phẩm thay vì render ra sản phẩm có kí tự hoặc title trùng với dữ liệu người dùng đã nhập vào
 
 //  hiệu ứng hover và focus của sezi sản phẩm
 function toggleBorder(element) {
