@@ -21,10 +21,9 @@ const tabLogin = () => {
   });
 }
 tabLogin();
-
-
-// const searchInput = document.querySelector(".search-inp")
-// const searchButton  = document.querySelector(".button-addon2")
-// searchButton.addEventListener("clcik",function(){
-//   localStorage.setItem()
-// })
+const searchInput = document.querySelector("#search-inp")
+const searchButton  = document.querySelector("#button-addon2")
+searchButton.addEventListener("click",function(){
+  localStorage.setItem("searching",searchInput.value)
+  window.location.href = "/product.html";
+})
