@@ -27,3 +27,8 @@ searchButton.addEventListener("click",function(){
   localStorage.setItem("searching",searchInput.value)
   window.location.href = "/product.html";
 })
+// search
+$("form").on("submit", function (e) {
+  e.preventDefault();
+  window.location.href = "/product.html?search=" + $("input").val();
+});

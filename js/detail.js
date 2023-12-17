@@ -253,3 +253,8 @@ function toggleBorder(element) {
   });
   element.classList.add("active");
 }
+// search
+$("form").on("submit", function (e) {
+  e.preventDefault();
+  window.location.href = "/product.html?search=" + $("input").val();
+});
