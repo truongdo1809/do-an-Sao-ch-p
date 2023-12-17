@@ -84,6 +84,10 @@ $(function () {
   getApi(URL_API);
 
   // search
+  $("form").on("submit", function (e) {
+    e.preventDefault();
+    window.location.href = "/product.html?search=" + $("input").val();
+  });
   async function getApi3() {
     const LIMIT = 8;
     const url = new URL(window.location.href);
