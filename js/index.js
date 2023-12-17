@@ -22,6 +22,16 @@ const products = (data) => {
   const shuffledData1 = shuffleArray(data.slice(0, 9));
   const shuffledData2 = shuffleArray(data.slice(11, 24));
   shuffledData1.forEach((product) => {
+    const priceSale = product.priceSale
+      ? product.priceSale
+          .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+          .replace("₫", "") + "<sup>đ</sup>"
+      : "";
+    const price = product.price
+      ? product.price
+          .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+          .replace("₫", "") + "<sup>đ</sup>"
+      : "";
     const HTML = /*html*/ `
     <div class="custom-col col-6 col-xl-2 col-md-4">
         <div class="product">
@@ -36,19 +46,8 @@ const products = (data) => {
                     <h2>${product.title}</h2>
              </a>
              <div class="price">
-             <span class="price-sale">${product.priceSale
-               .toLocaleString("vi-VN", {
-                 style: "currency",
-                 currency: "VND",
-               })
-               .replace("₫","")}<sup>đ</sup></span>
-
-                 <span class="price-product">${product.price
-                   .toLocaleString("vi-VN", {
-                     style: "currency",
-                     currency: "VND",
-                   })
-                   .replace("₫", "")}<sup>đ</sup></span>
+             <span class="price-sale">${priceSale}</span>
+            <span class="price-product">${price}</span>
 
              </div>
                 <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
@@ -59,6 +58,16 @@ const products = (data) => {
     HTML1 += HTML;
   });
   shuffledData2.forEach((product) => {
+    const priceSale = product.priceSale
+      ? product.priceSale
+          .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+          .replace("₫", "") + "<sup>đ</sup>"
+      : "";
+    const price = product.price
+      ? product.price
+          .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+          .replace("₫", "") + "<sup>đ</sup>"
+      : "";
     const HTML = /*html*/ `
     <div class="custom-col col-6 col-xl-2 col-md-4">
         <div class="product">
@@ -73,19 +82,8 @@ const products = (data) => {
                     <h2>${product.title}</h2>
              </a>
                 <div class="price">
-                <span class="price-sale">${product.priceSale
-                  .toLocaleString("vi-VN", {
-                    style: "currency",
-                    currency: "VND",
-                  })
-                  .replace("₫", "")}<sup>đ</sup></span>
-
-                    <span class="price-product">${product.price
-                      .toLocaleString("vi-VN", {
-                        style: "currency",
-                        currency: "VND",
-                      })
-                      .replace("₫", "")}<sup>đ</sup></span>
+                <span class="price-sale">${priceSale}</span>
+            <span class="price-product">${price}</span>
 
                 </div>
                 <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
@@ -124,7 +122,7 @@ $(".owl-carousel").owlCarousel({
 });
 
 // search
-$("form").on("submit",function(e){
- e.preventDefault();
- window.location.href = "/product.html?search=" + $("input").val();
-})
+$("form").on("submit", function (e) {
+  e.preventDefault();
+  window.location.href = "/product.html?search=" + $("input").val();
+});

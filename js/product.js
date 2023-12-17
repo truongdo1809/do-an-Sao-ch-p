@@ -26,6 +26,17 @@ $(function () {
     const productsList = document.querySelector("#products");
     let HTML = ``;
     data.forEach((product) => {
+      const priceSale = product.priceSale
+        ? product.priceSale
+            .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+            .replace("₫", "") + "<sup>đ</sup>"
+        : "";
+      const price = product.price
+        ? product.price
+            .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
+            .replace("₫", "") + "<sup>đ</sup>"
+        : "";
+
       HTML += /*html*/ `
         <div class="col-6 col-xl-3 col-md-3">
           <div class="product">
@@ -40,13 +51,8 @@ $(function () {
                 <h2>${product.title}</h2>
               </a>
               <div class="price">
-              <span class="price-sale">${product.priceSale
-                .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
-                .replace("₫", "")}<sup>đ</sup></span>
-
-              <span class="price-product">${product.price
-                .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
-                .replace("₫", "")}<sup>đ</sup></span>
+              <span class="price-sale">${priceSale}</span>
+            <span class="price-product">${price}</span>
 
               </div>
               <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
@@ -103,13 +109,10 @@ $(function () {
     try {
       const res = await fetch(
         `https://api-products-tau.vercel.app/products${
-          search ? "/search?q=" + search + "&" : "?"
+          search ? "?title_like=" + search + "&" : "?"
         }skip=${skip}&limit=${LIMIT}`
-       
       );
-    
       const json = await res.json();
-      
       const filteredProducts = Array.isArray(json)
         ? json.filter((product) =>
             product.title.toLowerCase().includes(search.toLowerCase())
@@ -122,57 +125,7 @@ $(function () {
   }
   window.onload = function () {
     getApi3();
-    console.log(getApi3());
+    
   };
 });
 
-// search
-// function checkSearching() {
-//   const URL_API = `https://api-products-tau.vercel.app/products`;
-//   fetch(URL_API)
-//     .then((response) => response.json())
-//     .then((products) => {
-//       let searchingData = localStorage.getItem("searching");
-//       if (searchingData) {
-//         const container = document.querySelector("#products");
-//         let HTML = ""; // Initialize HTML variable
-//         const filteredProducts = products.filter(
-//           (element) =>
-//             element.title.toLowerCase().indexOf(searchingData.toLowerCase()) >= 0
-//         );
-//         filteredProducts.forEach((element) => {
-//           if (element.status === "enabled") {
-//             HTML += /*html*/ `
-//               <div class="col-6 col-xl-3 col-md-3">
-//                 <div class="product">
-//                   <div class="product-img">
-//                     <a href="./detail.html?id=${element.id}">
-//                       <img class="default-img" src="${element.img}" alt="">
-//                       <img class="hover-img" src="${element.imgHover}" alt="">
-//                     </a>
-//                   </div>
-//                   <div class="product-info">
-//                     <a href="#" class="name-product">
-//                       <h2>${element.title}</h2>
-//                     </a>
-//                     <div class="price">
-//                       <span class="price-sale">${element.priceSale
-//                         .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
-//                         .replace("₫", "")}<sup>đ</sup></span>
-
-//                       <span class="price-product">${element.price
-//                         .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
-//                         .replace("₫", "")}<sup>đ</sup></span>
-//                     </div>
-//                     <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
-//                   </div>
-//                 </div>
-//               </div>
-//             `;
-//           }
-//         });
-//         container.innerHTML = HTML; // Set innerHTML after the loop
-//         localStorage.removeItem("searching");
-//       }
-//     });
-// }
