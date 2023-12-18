@@ -327,6 +327,18 @@ p {
   background-color: #3c9dea;
   color: #fff;
 }
+#empty,#error,#content{
+  display: none;
+  padding-left: 150px;
+  padding-top: 30px;
+  font-size: 20px;
+  font-weight: 500;
+
+}
+
+#empty,#error{
+  color: #d61c1f;
+}
 /* option1 */
 
 .product-img img {

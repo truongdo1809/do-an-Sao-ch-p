@@ -1,5 +1,5 @@
 $(function () {
-    // search
+    // search sản phẩm
     $("form").on("submit", function (e) {
       e.preventDefault();
       window.location.href = "/product.html?search=" + $("input").val();
@@ -10,6 +10,7 @@ $(function () {
       const search = url.searchParams.get("search");
       const page = url.searchParams.get("page") || 1;
       const skip = (page - 1) * LIMIT;
+    
       try {
         const res = await fetch(
           `https://api-products-tau.vercel.app/products${
@@ -23,14 +24,27 @@ $(function () {
             )
           : [];
         products(filteredProducts);
+    
+
       } catch (error) {
         console.error("Error parsing JSON:", error);
       }
     }
     window.onload = function () {
-      getApi3();
+      getApi3().then(data =>{
+        if(data.total === 0 ){
+          document.getElementById("empty").style.display = "block";
+        }else{
+          document.getElementById("content").style.display = "block"
+          document.querySelector(".total-product").textContent = product.length;
+        }
+      }).catch((error) => {
+        document.getElementById("error").style.display = "block"
+      })
       
     };
+
+    // lọc theo type
   let type = null;
   const urlParams = new URLSearchParams(window.location.search);
   type = urlParams.get("type");
@@ -96,12 +110,14 @@ $(function () {
     });
     productsList.innerHTML = HTML;
   };
+
   const updateNavbarTitle = (type) => {
     const navbarTitle = document.querySelector(".navbar-title .text2");
     if (navbarTitle) {
       navbarTitle.textContent = type || "SẢN PHẨM";
     }
   };
+  // lọc theo giá tiền
   const selectElement = document.querySelector(".navbar-option");
   if (selectElement) {
     selectElement.addEventListener("change", async (event) => {
