@@ -36,10 +36,8 @@ $(function () {
           document.getElementById("empty").style.display = "block";
         }else{
           document.getElementById("content").style.display = "block"
-          document.querySelector(".total-product").textContent = product.length;
+         
         }
-      }).catch((error) => {
-        document.getElementById("error").style.display = "block"
       })
       
     };
