@@ -126,3 +126,57 @@ $("form").on("submit", function (e) {
   e.preventDefault();
   window.location.href = "/product.html?search=" + $("input").val();
 });
+// menu mobile
+$(document).ready(function () {
+
+  $('.icon-right').click(function () {
+      $(this).hide().siblings('.icon-down').show().closest('ul').find('.menu-child1-mobile').slideUp();
+  });
+
+
+  $('.icon-down').click(function () {
+      $(this).hide().siblings('.icon-right').show().closest('ul').find('.menu-child1-mobile').slideDown();
+  });
+
+  $('.icon2-right').click(function () {
+    $(this).hide().siblings('.icon2-down').show().closest('ul').find('.menu-child3-mobile').slideUp();
+});
+
+
+$('.icon2-down').click(function () {
+    $(this).hide().siblings('.icon2-right').show().closest('ul').find('.menu-child3-mobile').slideDown();
+});
+});
+
+
+// ẩn hiện menu
+document.addEventListener("DOMContentLoaded", function () {
+  const menuMobile = document.querySelector(".menu-list-mobile");
+  const hiddenIcon = document.querySelector(".hidden-icon");
+  const body = document.querySelector("body");
+  hiddenIcon.addEventListener("click", function () {
+      // menuMobile.style.display = (menuMobile.style.display === "block") ? "none" : "block";
+      if(menuMobile.style.display === "block"){
+        menuMobile.style.display = "none"
+        body.style.marginLeft = "0"
+      }else{
+        menuMobile.style.display = "block"
+        body.style.marginLeft = "400px"
+
+
+      }
+  });
+
+  document.addEventListener("click", function (event) {
+      const isClickInsideMenu = menuMobile.contains(event.target);
+      const isClickOnHiddenIcon = hiddenIcon.contains(event.target);
+
+      if (!isClickInsideMenu && !isClickOnHiddenIcon) {
+          menuMobile.style.display = "none";
+        body.style.marginLeft = "0"
+          
+      }
+  });
+  
+});
+
