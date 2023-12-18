@@ -23,8 +23,13 @@ $(function () {
             product.title.toLowerCase().includes(search.toLowerCase())
           )
         : [];
+        if (filteredProducts.length > 0) {
+          updateNavbarTitle(search);
+        } else {
+          updateNavbarTitle("không có sản phẩm nào");
+        }
       products(filteredProducts);
-      updateNavbarTitle();
+
     } catch (error) {
       console.error("Error parsing JSON:", error);
     }
@@ -32,12 +37,7 @@ $(function () {
   window.onload = function () {
     getApi3();
   };
-  const updateNavbarTitle = (search) => {
-    const navbarTitle = document.querySelector(".navbar-title .text2");
-    if (navbarTitle) {
-      navbarTitle.textContent = search || "không có sản phẩm nào";
-    }
-  };
+ 
   // lọc theo type
   let type = null;
   const urlParams = new URLSearchParams(window.location.search);
@@ -105,7 +105,7 @@ $(function () {
     productsList.innerHTML = HTML;
   };
 
-  const updateNavbarType = (type) => {
+  const updateNavbarTitle = (type) => {
     const navbarTitle = document.querySelector(".navbar-title .text2");
     if (navbarTitle) {
       navbarTitle.textContent = type || "SẢN PHẨM";
@@ -122,6 +122,6 @@ $(function () {
       await getApi2(newURL);
     });
   }
-  updateNavbarType(type);
+  updateNavbarTitle(type);
   getApi(URL_API);
 });
