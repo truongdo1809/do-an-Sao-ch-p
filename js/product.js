@@ -31,17 +31,17 @@ $(function () {
       }
     }
     window.onload = function () {
-      getApi3().then(data =>{
-        if(data === 0 ){
-          document.getElementById("empty").style.display = "block";
-        }else{
-          document.getElementById("content").style.display = "block"
-         
-        }
-      })
+      getApi3()
+      updateNavbarTitle()
       
+      
+      const updateNavbarTitle = (search) => {
+        const navbarTitle = document.querySelector(".navbar-title .text2");
+        if (navbarTitle) {
+          navbarTitle.textContent = search || "không có sản phẩm nào";
+        }
+      };
     };
-
     // lọc theo type
   let type = null;
   const urlParams = new URLSearchParams(window.location.search);
@@ -109,7 +109,7 @@ $(function () {
     productsList.innerHTML = HTML;
   };
 
-  const updateNavbarTitle = (type) => {
+  const updateNavbarType = (type) => {
     const navbarTitle = document.querySelector(".navbar-title .text2");
     if (navbarTitle) {
       navbarTitle.textContent = type || "SẢN PHẨM";
@@ -126,7 +126,7 @@ $(function () {
       await getApi2(newURL);
     });
   }
-  updateNavbarTitle(type);
+  updateNavbarType(type);
   getApi(URL_API);
 
 
