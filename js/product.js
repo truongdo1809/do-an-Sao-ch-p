@@ -32,7 +32,7 @@ $(function () {
     }
     window.onload = function () {
       getApi3().then(data =>{
-        if(data.total === 0 ){
+        if(data === 0 ){
           document.getElementById("empty").style.display = "block";
         }else{
           document.getElementById("content").style.display = "block"
