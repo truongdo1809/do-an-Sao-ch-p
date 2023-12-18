@@ -1,48 +1,44 @@
 $(function () {
-    // search sản phẩm
-    $("form").on("submit", function (e) {
-      e.preventDefault();
-      window.location.href = "/product.html?search=" + $("input").val();
-    });
-    async function getApi3() {
-      const LIMIT = 8;
-      const url = new URL(window.location.href);
-      const search = url.searchParams.get("search");
-      const page = url.searchParams.get("page") || 1;
-      const skip = (page - 1) * LIMIT;
-    
-      try {
-        const res = await fetch(
-          `https://api-products-tau.vercel.app/products${
-            search ? "?title_like=" + search + "&" : "?"
-          }skip=${skip}&limit=${LIMIT}`
-        );
-        const json = await res.json();
-        const filteredProducts = Array.isArray(json)
-          ? json.filter((product) =>
-              product.title.toLowerCase().includes(search.toLowerCase())
-            )
-          : [];
-        products(filteredProducts);
-    
+  // search sản phẩm
+  $("form").on("submit", function (e) {
+    e.preventDefault();
+    window.location.href = "/product.html?search=" + $("input").val();
+  });
+  async function getApi3() {
+    const LIMIT = 8;
+    const url = new URL(window.location.href);
+    const search = url.searchParams.get("search");
+    const page = url.searchParams.get("page") || 1;
+    const skip = (page - 1) * LIMIT;
 
-      } catch (error) {
-        console.error("Error parsing JSON:", error);
-      }
+    try {
+      const res = await fetch(
+        `https://api-products-tau.vercel.app/products${
+          search ? "?title_like=" + search + "&" : "?"
+        }skip=${skip}&limit=${LIMIT}`
+      );
+      const json = await res.json();
+      const filteredProducts = Array.isArray(json)
+        ? json.filter((product) =>
+            product.title.toLowerCase().includes(search.toLowerCase())
+          )
+        : [];
+      products(filteredProducts);
+      updateNavbarTitle();
+    } catch (error) {
+      console.error("Error parsing JSON:", error);
     }
-    window.onload = function () {
-      getApi3()
-      updateNavbarTitle()
-      
-      
-      const updateNavbarTitle = (search) => {
-        const navbarTitle = document.querySelector(".navbar-title .text2");
-        if (navbarTitle) {
-          navbarTitle.textContent = search || "không có sản phẩm nào";
-        }
-      };
-    };
-    // lọc theo type
+  }
+  window.onload = function () {
+    getApi3();
+  };
+  const updateNavbarTitle = (search) => {
+    const navbarTitle = document.querySelector(".navbar-title .text2");
+    if (navbarTitle) {
+      navbarTitle.textContent = search || "không có sản phẩm nào";
+    }
+  };
+  // lọc theo type
   let type = null;
   const urlParams = new URLSearchParams(window.location.search);
   type = urlParams.get("type");
@@ -128,7 +124,4 @@ $(function () {
   }
   updateNavbarType(type);
   getApi(URL_API);
-
-
 });
-
