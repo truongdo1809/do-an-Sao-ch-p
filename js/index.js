@@ -153,15 +153,15 @@ $('.icon2-down').click(function () {
 document.addEventListener("DOMContentLoaded", function () {
   const menuMobile = document.querySelector(".menu-list-mobile");
   const hiddenIcon = document.querySelector(".hidden-icon");
-  const body = document.querySelector("body");
+  const html = document.querySelector("html");
   hiddenIcon.addEventListener("click", function () {
-      // menuMobile.style.display = (menuMobile.style.display === "block") ? "none" : "block";
+      
       if(menuMobile.style.display === "block"){
         menuMobile.style.display = "none"
-        body.style.marginLeft = "0"
+        html.style.marginLeft = "0"
       }else{
         menuMobile.style.display = "block"
-        body.style.marginLeft = "400px"
+        html.style.marginLeft = "200px"
 
 
       }
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!isClickInsideMenu && !isClickOnHiddenIcon) {
           menuMobile.style.display = "none";
-        body.style.marginLeft = "0"
+        html.style.marginLeft = "0"
           
       }
   });

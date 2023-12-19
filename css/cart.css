@@ -165,15 +165,16 @@ p {
 /* header */
 /* menu-mobile */
 .menu-list-mobile {
+  border: 1px dotted #868686;
   padding: 0;
-  width: 400px;
+  width: 200px !important;
   position: absolute;
   height:1000px !important;
   top: 100px;
   left: 0;
   z-index: 1000;
   background-color: #fff;
-  display: none;
+  /* display: none; */
 }
 
 .menu-item2-moblie .fa-chevron-down{
