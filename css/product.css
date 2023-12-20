@@ -168,14 +168,15 @@ p {
 /* menu-mobile */
 .menu-list-mobile {
   padding: 0;
-  width: 400px;
-  position: absolute;
+  width: 300px;
+  position: fixed;
   height:1000px !important;
   top: 100px;
   left: 0;
   z-index: 1000;
   background-color: #fff;
   display: none;
+  overflow: hidden;
 }
 
 .menu-item2-moblie .fa-chevron-down{

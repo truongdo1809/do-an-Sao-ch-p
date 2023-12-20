@@ -26,12 +26,12 @@ $(function () {
         if (filteredProducts.length > 0) {
           updateNavbarTitle(search);
         } else {
-          updateNavbarTitle("không có sản phẩm nào");
+          updateNavbarTitle("không có sản phẩm bạn muốn tìm");
         }
       products(filteredProducts);
 
     } catch (error) {
-      console.error("Error parsing JSON:", error);
+      alert("some thing wrong!")
     }
   }
   window.onload = function () {
@@ -95,7 +95,7 @@ $(function () {
             <span class="price-product">${price}</span>
 
               </div>
-              <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
+              <a href="./detail.html?id=${product.id}" class="add-to_cart">Thêm vào giỏ hàng</a>
             </div>
           </div>
         </div>

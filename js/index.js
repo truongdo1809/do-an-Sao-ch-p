@@ -50,7 +50,7 @@ const products = (data) => {
             <span class="price-product">${price}</span>
 
              </div>
-                <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
+                <a href="./detail.html?id=${product.id}" class="add-to_cart">Thêm vào giỏ hàng</a>
             </div>
         </div>
   </div>
@@ -86,7 +86,7 @@ const products = (data) => {
             <span class="price-product">${price}</span>
 
                 </div>
-                <a href="./detail.html" class="add-to_cart">Thêm vào giỏ hàng</a>
+                <a href="./detail.html?id=${product.id}" class="add-to_cart">Thêm vào giỏ hàng</a>
             </div>
         </div>
   </div>
@@ -153,15 +153,16 @@ $('.icon2-down').click(function () {
 document.addEventListener("DOMContentLoaded", function () {
   const menuMobile = document.querySelector(".menu-list-mobile");
   const hiddenIcon = document.querySelector(".hidden-icon");
-  const html = document.querySelector("html");
+  const body = document.querySelector("body");
   hiddenIcon.addEventListener("click", function () {
       
       if(menuMobile.style.display === "block"){
         menuMobile.style.display = "none"
-        html.style.marginLeft = "0"
+        body.style.marginLeft = "0"
       }else{
         menuMobile.style.display = "block"
-        html.style.marginLeft = "200px"
+        body.style.marginLeft = "400px"
+  
 
 
       }
@@ -173,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!isClickInsideMenu && !isClickOnHiddenIcon) {
           menuMobile.style.display = "none";
-        html.style.marginLeft = "0"
+        body.style.marginLeft = "0"
           
       }
   });

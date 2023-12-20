@@ -56,7 +56,7 @@ const products = (data) => {
     }
     localStorage.setItem("products", JSON.stringify(existingProducts));
 
-    console.log("Product added to localStorage:", existingProducts);
+   
   };
 
   //  update tổng tiền sản phẩm
