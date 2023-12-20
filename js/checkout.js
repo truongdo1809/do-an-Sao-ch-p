@@ -154,10 +154,11 @@ $("form").on("submit", function (e) {
   e.preventDefault();
   window.location.href = "/product.html?search=" + $("input").val();
 });
-
-$("div").on("submit", function (e) {
+const inputHiddenValue = document.querySelector(".input-hidden input")
+const inputValue = inputHiddenValue.value;
+$("form").on("submit", function (e) {
   e.preventDefault();
-  window.location.href = "/product.html?search=" + $("input").val();
+  window.location.href = "/product.html?search=" + inputValue;
 });
 
 
