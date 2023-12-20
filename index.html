@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,98 +25,12 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <!-- owl carousel -->
 </head>
+
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 p-0">
-                <div class="header">
-                    <div class="hidden-icon ">
-                        <i class="fa-solid fa-bars"></i>
-                    </div>
-                    <div class="header-img">
-                        <a href="/"> <img src="images/logo-header.jpg" alt="logo chat"></a>
-                    </div>
-                    <form class="header-input" onsubmit="onSearch()">
-                        <input type="text" placeholder="Tìm kiếm sản phẩm bạn muốn ">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </form>
-                    <div class="hotline">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>HOTLINE: <strong>1900 986 882</strong></span>
-                    </div>
-                    <div class="login-register">
-                        <p class="login"><a href="login.html">Đăng nhập</a></p>
-                        <p class="register"><a href="login.html">Đăng ký</a></p>
-                    </div>
-                    <div class="header-cart">
-                        <a href="/cart.html"> <i class="fa-solid fa-cart-shopping cart-icon1"></i></a>
-                        <span>0<sup>đ</sup></span>
-
-                    </div>
-                    <div class="header-cart2">
-                        <a href="/cart.html"><i class="fa-solid fa-bag-shopping cart-icon2">
-                            </i></a>
-                        <strong>0</strong>
-                    </div>
-                    <div class="input-hidden">
-                        <input type="text" placeholder="Tìm kiếm...">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="header-menu">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <ul class="menu-list">
-                        <li class="menu-item1"><a href="/">TRANG CHỦ</a></li>
-                        <li class="menu-item2"><a href="/product.html">SẢN PHẨM</a>
-                            <ul class="menu-child1">
-                                <li><a href="./product.html?type=ÁO SƠ MI">ÁO SƠ MI </a><i
-                                        class="fa-solid fa-caret-right"></i></li>
-                                <li><a href="./product.html?type=ÁO SƠ MI KIỂU">ÁO SƠ MI KIỂU </a><i
-                                        class="fa-solid fa-caret-right"></i></li>
-                                <li><a href="./product.html?type=ÁO THUN">ÁO THUN </a><i
-                                        class="fa-solid fa-caret-right"></i></li>
-                                <li><a href="./product.html?type=ÁO KHOÁC ">ÁO KHOÁC </a><i
-                                        class="fa-solid fa-caret-right"></i></li>
-                                <li><a href="./product.html?type=ÁO MĂNG TÔ ">ÁO MĂNG TÔ </a><i
-                                        class="fa-solid fa-caret-right"></i></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item3"><a href="#">BỘ SƯU TẬP</a>
-                            <ul class="menu-child2">
-                                <li><i class="fa-solid fa-caret-right"></i><a href="#">A DECEMBER TO REMEMBER</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href="#">MID-AUTUMN COLLECTION | HỌA
-                                        NGUYỆT</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href="#">BLAZER BOOM</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href="#">ON STAGE</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href="#">BE UNIQUE</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href="#">EASY 2 WEAR</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item4"><a href="#">SALE</a></li>
-                        <li class="menu-item5"><a href="#">THÔNG TIN</a>
-                            <ul class="menu-child3">
-                                <li><i class="fa-solid fa-caret-right"></i><a href=""> KHÁCH HÀNG THÂN THIẾT</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href=""> GIỚI THIỆU</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href=""> TIN TỨC</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href=""> QUY ĐỊNH ĐỔI TRẢ HÀNG</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href=""> HƯỚNG DẪN MUA HÀNG</a></li>
-                                <li><i class="fa-solid fa-caret-right"></i><a href=""> TƯ VẤN SIZE</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item6"><a href="#">CỬA HÀNG</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- menu mobile -->
     <ul class="menu-list-mobile">
-        <li class="menu-item1"><a href="/">TRANG CHỦ</a></li>
+        <li class="icon-hidden-menu"><i class="fa-solid fa-square-xmark"></i></li>
+        <li class="menu-item1-mobile"><a href="/">TRANG CHỦ</a> </li>
         <li class="menu-item2-mobile"><a href="/product.html">SẢN PHẨM</a>
             <i class="fa-solid fa-chevron-down icon-down"></i><i class="fa-solid fa-chevron-right icon-right"></i>
         </li>
@@ -143,53 +58,148 @@
         </ul>
         <li class="menu-item6"><a href="#">CỬA HÀNG</a></li>
     </ul>
-    <!-- slide -->
-    <div class="slide-show owl-carousel owl-theme ">
-        <div class="items"><img src="images/banner.images/banner1.jpeg" alt=""></div>
-        <div class="items"><img src="images/banner.images/banner2.jpeg" alt=""></div>
-        <div class="items"><img src="images/banner.images/banner3.jpeg" alt=""></div>
-        <div class="items"><img src="images/banner.images/banner4.webp" alt=""></div>
-        <div class="items"><img src="images/banner.images/banner5.jpg" alt=""></div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="section1">
-                    <h3><a href="#">Top sản phẩm hot nhất tuần</a></h3>
+
+
+    <div class="body-index">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 p-0">
+                    <div class="header">
+                        <div class="hidden-icon ">
+                            <i class="fa-solid fa-bars"></i>
+                        </div>
+                        <div class="header-img">
+                            <a href="/"> <img src="images/logo-header.jpg" alt="logo chat"></a>
+                        </div>
+                        <form class="header-input" onsubmit="onSearch()">
+                            <input type="text" placeholder="Tìm kiếm sản phẩm bạn muốn ">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </form>
+                        <div class="hotline">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>HOTLINE: <strong>1900 986 882</strong></span>
+                        </div>
+                        <div class="login-register">
+                            <p class="login"><a href="login.html">Đăng nhập</a></p>
+                            <p class="register"><a href="login.html">Đăng ký</a></p>
+                        </div>
+                        <div class="header-cart">
+                            <a href="/cart.html"> <i class="fa-solid fa-cart-shopping cart-icon1"></i></a>
+                            <span>0<sup>đ</sup></span>
+
+                        </div>
+                        <div class="header-cart2">
+                            <a href="/cart.html"><i class="fa-solid fa-bag-shopping cart-icon2">
+                                </i></a>
+                            <strong>0</strong>
+                        </div>
+                        <div class="input-hidden">
+                            <input type="text" placeholder="Tìm kiếm...">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="menu-list">
+                            <li class="menu-item1"><a href="/">TRANG CHỦ</a></li>
+                            <li class="menu-item2"><a href="/product.html">SẢN PHẨM</a>
+                                <ul class="menu-child1">
+                                    <li><a href="./product.html?type=ÁO SƠ MI">ÁO SƠ MI </a><i
+                                            class="fa-solid fa-caret-right"></i></li>
+                                    <li><a href="./product.html?type=ÁO SƠ MI KIỂU">ÁO SƠ MI KIỂU </a><i
+                                            class="fa-solid fa-caret-right"></i></li>
+                                    <li><a href="./product.html?type=ÁO THUN">ÁO THUN </a><i
+                                            class="fa-solid fa-caret-right"></i></li>
+                                    <li><a href="./product.html?type=ÁO KHOÁC ">ÁO KHOÁC </a><i
+                                            class="fa-solid fa-caret-right"></i></li>
+                                    <li><a href="./product.html?type=ÁO MĂNG TÔ ">ÁO MĂNG TÔ </a><i
+                                            class="fa-solid fa-caret-right"></i></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item3"><a href="#">BỘ SƯU TẬP</a>
+                                <ul class="menu-child2">
+                                    <li><i class="fa-solid fa-caret-right"></i><a href="#">A DECEMBER TO REMEMBER</a>
+                                    </li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href="#">MID-AUTUMN COLLECTION | HỌA
+                                            NGUYỆT</a></li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href="#">BLAZER BOOM</a></li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href="#">ON STAGE</a></li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href="#">BE UNIQUE</a></li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href="#">EASY 2 WEAR</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item4"><a href="#">SALE</a></li>
+                            <li class="menu-item5"><a href="#">THÔNG TIN</a>
+                                <ul class="menu-child3">
+                                    <li><i class="fa-solid fa-caret-right"></i><a href=""> KHÁCH HÀNG THÂN THIẾT</a>
+                                    </li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href=""> GIỚI THIỆU</a></li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href=""> TIN TỨC</a></li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href=""> QUY ĐỊNH ĐỔI TRẢ HÀNG</a>
+                                    </li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href=""> HƯỚNG DẪN MUA HÀNG</a></li>
+                                    <li><i class="fa-solid fa-caret-right"></i><a href=""> TƯ VẤN SIZE</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item6"><a href="#">CỬA HÀNG</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- slide -->
+        <div class="slide-show owl-carousel owl-theme ">
+            <div class="items"><img src="images/banner.images/banner1.jpeg" alt=""></div>
+            <div class="items"><img src="images/banner.images/banner2.jpeg" alt=""></div>
+            <div class="items"><img src="images/banner.images/banner3.jpeg" alt=""></div>
+            <div class="items"><img src="images/banner.images/banner4.webp" alt=""></div>
+            <div class="items"><img src="images/banner.images/banner5.jpg" alt=""></div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 p-0">
+                    <div class="section1">
+                        <h3><a href="#">Top sản phẩm hot nhất tuần</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- option1 -->
+        <div class="option1">
+            <div class="container ">
+                <div class="custom-row row" id="option-product">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="more-product">
+                        <span>Mời bạn <a href="#">xem thêm các sản phẩm hot</a>
+                            <p>khác</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section1">
+                        <h3><a href="#">TOP SẢN PHẨM MỚI NHẤT TUẦN NÀY</a></h3>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- option1 -->
-    <div class="option1">
-        <div class="container ">
-            <div class="custom-row row" id="option-product">
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="more-product">
-                    <span>Mời bạn <a href="#">xem thêm các sản phẩm hot</a>
-                        <p>khác</p>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="section1">
-                    <h3><a href="#">TOP SẢN PHẨM MỚI NHẤT TUẦN NÀY</a></h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <!-- end-option1 -->
-    <!-- option2  -->
+ 
     <div class="option2">
         <div class="container ">
             <div class="custom-row row " id="option2-product">
@@ -281,6 +291,7 @@
                             <span class="date-item">09-09-2019</span>
                             <a class="link-blog" href="#">tin tức</a>
                         </div>
+
                     </div>
                     <div class="blog-item1">
                         <div class="blog-item__img">
@@ -291,6 +302,7 @@
                             <span class="date-item">12-10-2021</span>
                             <a class="link-blog" href="#">tin tức</a>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -442,6 +454,8 @@
     <div class="web-icon2">
         <i class="fa-solid fa-phone"></i>
     </div>
+</div>
+
 
     <script src="./lib/axios.min.js"></script>
 

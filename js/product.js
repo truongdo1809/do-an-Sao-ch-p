@@ -31,7 +31,8 @@ $(function () {
       products(filteredProducts);
 
     } catch (error) {
-      alert("some thing wrong!")
+      
+      console.log(error ,"something wrong");
     }
   }
   window.onload = function () {
@@ -128,23 +129,55 @@ $(function () {
 // menu mobile
 $(document).ready(function () {
 
-  $('.fa-chevron-right').click(function () {
-      $(this).hide().siblings('.fa-chevron-down').show().closest('ul').find('.menu-child1-moble').slideUp();
+  $('.icon-right').click(function () {
+      $(this).hide().siblings('.icon-down').show().closest('ul').find('.menu-child1-mobile').slideUp();
   });
 
 
-  $('.fa-chevron-down').click(function () {
-      $(this).hide().siblings('.fa-chevron-right').show().closest('ul').find('.menu-child1-moble').slideDown();
+  $('.icon-down').click(function () {
+      $(this).hide().siblings('.icon-right').show().closest('ul').find('.menu-child1-mobile').slideDown();
   });
+
+  $('.icon2-right').click(function () {
+    $(this).hide().siblings('.icon2-down').show().closest('ul').find('.menu-child3-mobile').slideUp();
 });
 
-// ẩn hiện menu
+
+$('.icon2-down').click(function () {
+    $(this).hide().siblings('.icon2-right').show().closest('ul').find('.menu-child3-mobile').slideDown();
+});
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const menuMobile = document.querySelector(".menu-list-mobile");
   const hiddenIcon = document.querySelector(".hidden-icon");
-
+  const body = document.querySelector("body");
+  const iconHiddenMenu = document.querySelector(".icon-hidden-menu i")
+  iconHiddenMenu.addEventListener("click",function(){
+    if(menuMobile.style.display === "block"){
+      menuMobile.style.display = "none"
+      document.querySelector(".body-product").style.marginLeft = "0";
+      body.style.overflow = "";
+     
+    }else{
+      menuMobile.style.display = "block"
+      document.querySelector(".body-product").style.marginLeft = "300px";
+      body.style.overflow = "hidden";
+ 
+    }
+  })
   hiddenIcon.addEventListener("click", function () {
-      menuMobile.style.display = (menuMobile.style.display === "block") ? "none" : "block";
+      
+      if(menuMobile.style.display === "block"){
+        menuMobile.style.display = "none"
+        document.querySelector(".body-product").style.marginLeft = "0";
+        body.style.overflow = "";
+      }else{
+        menuMobile.style.display = "block"
+        document.querySelector(".body-product").style.marginLeft = "300px";
+        body.style.overflow = "hidden";
+   
+      }
   });
 
   document.addEventListener("click", function (event) {
@@ -153,6 +186,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!isClickInsideMenu && !isClickOnHiddenIcon) {
           menuMobile.style.display = "none";
+        document.querySelector(".body-product").style.marginLeft = "0";
+          
       }
   });
+  
 });

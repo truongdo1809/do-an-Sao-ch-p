@@ -154,17 +154,29 @@ document.addEventListener("DOMContentLoaded", function () {
   const menuMobile = document.querySelector(".menu-list-mobile");
   const hiddenIcon = document.querySelector(".hidden-icon");
   const body = document.querySelector("body");
+  const iconHiddenMenu = document.querySelector(".icon-hidden-menu i")
+  iconHiddenMenu.addEventListener("click",function(){
+    if(menuMobile.style.display === "block"){
+      menuMobile.style.display = "none"
+      document.querySelector(".body-index").style.marginLeft = "0";
+      body.style.overflow = "";
+    }else{
+      menuMobile.style.display = "block"
+      document.querySelector(".body-index").style.marginLeft = "300px";
+      body.style.overflow = "hidden";
+    }
+  })
   hiddenIcon.addEventListener("click", function () {
       
       if(menuMobile.style.display === "block"){
         menuMobile.style.display = "none"
-        body.style.marginLeft = "0"
+        document.querySelector(".body-index").style.marginLeft = "0";
+        body.style.overflow = "";
       }else{
         menuMobile.style.display = "block"
-        body.style.marginLeft = "400px"
-  
-
-
+        document.querySelector(".body-index").style.marginLeft = "300px";
+        body.style.overflow = "hidden";
+   
       }
   });
 
