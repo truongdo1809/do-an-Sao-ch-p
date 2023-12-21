@@ -1,7 +1,9 @@
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 const URL_DETAIL = `https://api-products-tau.vercel.app/products/${id}`;
-
+const notificationAddProduct = document.querySelector(
+  ".notification-add-product"
+);
 const getApi = async (URL_API) => {
   const response = await axios.get(URL_API);
   products(response.data);
@@ -28,6 +30,16 @@ const products = (data) => {
     .toLocaleString("vi-VN", { style: "currency", currency: "VND" })
     .replace("₫", "")}<sup>đ</sup></span>
 </div>`;
+  // thông báo add product
+  notificationAddProduct.innerHTML = /*html*/ `
+<div class="show-text">ĐÃ THÊM SẢN PHẨM</div>
+<div class="show-products">
+  <div class="show-img-product">
+    <img src="${data.img}" alt="">
+  </div>
+  <span class="show-text-products">${data.title}</span>
+</div>
+<button class="show-btn-cart"><a href="./cart.html">VÀO GIỎ HÀNG</a></button>`;
 
   const productTitle = document.querySelector(".product-title");
   productTitle.innerHTML = data.title;
@@ -55,13 +67,11 @@ const products = (data) => {
       });
     }
     localStorage.setItem("products", JSON.stringify(existingProducts));
-
-   
   };
 
   //  update tổng tiền sản phẩm
   let totalPrice = 0;
- 
+
   //total
   const updateTotal = () => {
     totalPrice = 0;
@@ -124,6 +134,12 @@ const products = (data) => {
     } else {
       addProductToLocalStorage(data, currentValue, selectedSize);
       updateTotal();
+
+      notificationAddProduct.style.top = "120px";
+      notificationAddProduct.style.transition = "1s ease";
+      setTimeout(() => {
+        notificationAddProduct.style.top = "-300px";
+      }, 3000);
     }
   });
 };
@@ -256,77 +272,96 @@ function toggleBorder(element) {
 // search
 $(".header-input").on("submit", function (e) {
   e.preventDefault();
-  window.location.href = "/product.html?search=" + $(".header-input input").val();
+  window.location.href =
+    "/product.html?search=" + $(".header-input input").val();
 });
-  // search ở menu mobile
-  $(".input-hidden").on("submit", function (e) {
-    e.preventDefault();
-    window.location.href = "/product.html?search=" + $(".input-hidden input").val();
-  });
+// search ở menu mobile
+$(".input-hidden").on("submit", function (e) {
+  e.preventDefault();
+  window.location.href =
+    "/product.html?search=" + $(".input-hidden input").val();
+});
 // menu mobile
 $(document).ready(function () {
-
-  $('.icon-right').click(function () {
-      $(this).hide().siblings('.icon-down').show().closest('ul').find('.menu-child1-mobile').slideUp();
+  $(".icon-right").click(function () {
+    $(this)
+      .hide()
+      .siblings(".icon-down")
+      .show()
+      .closest("ul")
+      .find(".menu-child1-mobile")
+      .slideUp();
   });
 
-
-  $('.icon-down').click(function () {
-      $(this).hide().siblings('.icon-right').show().closest('ul').find('.menu-child1-mobile').slideDown();
+  $(".icon-down").click(function () {
+    $(this)
+      .hide()
+      .siblings(".icon-right")
+      .show()
+      .closest("ul")
+      .find(".menu-child1-mobile")
+      .slideDown();
   });
 
-  $('.icon2-right').click(function () {
-    $(this).hide().siblings('.icon2-down').show().closest('ul').find('.menu-child3-mobile').slideUp();
-});
+  $(".icon2-right").click(function () {
+    $(this)
+      .hide()
+      .siblings(".icon2-down")
+      .show()
+      .closest("ul")
+      .find(".menu-child3-mobile")
+      .slideUp();
+  });
 
-
-$('.icon2-down').click(function () {
-    $(this).hide().siblings('.icon2-right').show().closest('ul').find('.menu-child3-mobile').slideDown();
+  $(".icon2-down").click(function () {
+    $(this)
+      .hide()
+      .siblings(".icon2-right")
+      .show()
+      .closest("ul")
+      .find(".menu-child3-mobile")
+      .slideDown();
+  });
 });
-});
-
 
 // ẩn hiện menu
 document.addEventListener("DOMContentLoaded", function () {
   const menuMobile = document.querySelector(".menu-list-mobile");
   const hiddenIcon = document.querySelector(".hidden-icon");
   const body = document.querySelector("body");
-  const iconHiddenMenu = document.querySelector(".icon-hidden-menu i")
-  iconHiddenMenu.addEventListener("click",function(){
-    if(menuMobile.style.display === "block"){
-      menuMobile.style.display = "none"
+  const iconHiddenMenu = document.querySelector(".icon-hidden-menu i");
+  iconHiddenMenu.addEventListener("click", function () {
+    if (menuMobile.style.display === "block") {
+      menuMobile.style.display = "none";
       document.querySelector(".body-detail").style.marginLeft = "0";
       body.style.overflow = "";
-    }else{
-      menuMobile.style.display = "block"
+    } else {
+      menuMobile.style.display = "block";
       document.querySelector(".body-detail").style.marginLeft = "300px";
       body.style.overflow = "hidden";
     }
-  })
+  });
   hiddenIcon.addEventListener("click", function () {
-      
-      if(menuMobile.style.display === "block"){
-        menuMobile.style.display = "none"
-        document.querySelector(".body-detail").style.marginLeft = "0";
-        body.style.overflow = "";
-      }else{
-        menuMobile.style.display = "block"
-        document.querySelector(".body-detail").style.marginLeft = "300px";
-        body.style.overflow = "hidden";
-   
-      }
+    if (menuMobile.style.display === "block") {
+      menuMobile.style.display = "none";
+      document.querySelector(".body-detail").style.marginLeft = "0";
+      body.style.overflow = "";
+    } else {
+      menuMobile.style.display = "block";
+      document.querySelector(".body-detail").style.marginLeft = "300px";
+      body.style.overflow = "hidden";
+    }
   });
 
   document.addEventListener("click", function (event) {
-      const isClickInsideMenu = menuMobile.contains(event.target);
-      const isClickOnHiddenIcon = hiddenIcon.contains(event.target);
+    const isClickInsideMenu = menuMobile.contains(event.target);
+    const isClickOnHiddenIcon = hiddenIcon.contains(event.target);
 
-      if (!isClickInsideMenu && !isClickOnHiddenIcon) {
-          menuMobile.style.display = "none";
-          body.style.overflow = "";
-    
-          document.querySelector(".body-detail").style.marginLeft = "0";
-      }
+    if (!isClickInsideMenu && !isClickOnHiddenIcon) {
+      menuMobile.style.display = "none";
+      body.style.overflow = "";
+
+      document.querySelector(".body-detail").style.marginLeft = "0";
+    }
   });
-  
 });
