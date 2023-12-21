@@ -323,6 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!isClickInsideMenu && !isClickOnHiddenIcon) {
           menuMobile.style.display = "none";
+          body.style.overflow = "";
     
           document.querySelector(".body-detail").style.marginLeft = "0";
       }

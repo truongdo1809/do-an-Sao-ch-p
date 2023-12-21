@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!isClickInsideMenu && !isClickOnHiddenIcon) {
           menuMobile.style.display = "none";
+          body.style.overflow = "";
         
         document.querySelector(".body-login").style.marginLeft = "0";
           

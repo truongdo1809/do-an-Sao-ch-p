@@ -192,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isClickInsideMenu && !isClickOnHiddenIcon) {
           menuMobile.style.display = "none";
         document.querySelector(".body-product").style.marginLeft = "0";
+        body.style.overflow = "";
           
       }
   });

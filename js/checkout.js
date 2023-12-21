@@ -222,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!isClickInsideMenu && !isClickOnHiddenIcon) {
           menuMobile.style.display = "none";
+        body.style.overflow = "";
         document.querySelector(".body-checkout").style.marginLeft = "0";
           
       }
