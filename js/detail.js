@@ -323,8 +323,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!isClickInsideMenu && !isClickOnHiddenIcon) {
           menuMobile.style.display = "none";
-        body.style.marginLeft = "0"
-          
+    
+          document.querySelector(".body-detail").style.marginLeft = "0";
       }
   });
   
