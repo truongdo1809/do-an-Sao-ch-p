@@ -154,7 +154,7 @@ $("form").on("submit", function (e) {
   e.preventDefault();
   window.location.href = "/product.html?search=" + $("input").val();
 });
-
+// search ở menu mobile
 $("form").on("submit", function (e) {
   e.preventDefault();
   window.location.href = "/product.html?search=" + $(".input-hidden input").val();
