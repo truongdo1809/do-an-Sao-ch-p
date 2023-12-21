@@ -116,7 +116,6 @@ pullRight.addEventListener("click", function (event) {
 function validateForm() {
   const formInputs = document.querySelectorAll("#checkout-form input");
   let isValid = true;
-
   formInputs.forEach((input) => {
     const parentDiv = input.parentElement;
     const requiredMessage = parentDiv.querySelector(".required-message");
@@ -160,8 +159,6 @@ $(".header-input").on("submit", function (e) {
     window.location.href = "/product.html?search=" + $(".input-hidden input").val();
   });
 
-
-
 // menu mobile
 $(document).ready(function () {
 
@@ -178,13 +175,10 @@ $(document).ready(function () {
     $(this).hide().siblings('.icon2-down').show().closest('ul').find('.menu-child3-mobile').slideUp();
 });
 
-
 $('.icon2-down').click(function () {
     $(this).hide().siblings('.icon2-right').show().closest('ul').find('.menu-child3-mobile').slideDown();
 });
 });
-
-
 // ẩn hiện menu
 document.addEventListener("DOMContentLoaded", function () {
   const menuMobile = document.querySelector(".menu-list-mobile");
@@ -215,7 +209,6 @@ document.addEventListener("DOMContentLoaded", function () {
    
       }
   });
-
   document.addEventListener("click", function (event) {
       const isClickInsideMenu = menuMobile.contains(event.target);
       const isClickOnHiddenIcon = hiddenIcon.contains(event.target);
