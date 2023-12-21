@@ -1,14 +1,14 @@
 $(function () {
-  // search sản phẩm
-  $("form").on("submit", function (e) {
-    e.preventDefault();
-    window.location.href = "/product.html?search=" + $("input").val();
-  });
-  // search ở menu mobile
-$("form").on("submit", function (e) {
+// search
+$(".header-input").on("submit", function (e) {
   e.preventDefault();
-  window.location.href = "/product.html?search=" + $(".input-hidden input").val();
+  window.location.href = "/product.html?search=" + $(".header-input input").val();
 });
+  // search ở menu mobile
+  $(".input-hidden").on("submit", function (e) {
+    e.preventDefault();
+    window.location.href = "/product.html?search=" + $(".input-hidden input").val();
+  });
   async function getApi3() {
     const LIMIT = 8;
     const url = new URL(window.location.href);

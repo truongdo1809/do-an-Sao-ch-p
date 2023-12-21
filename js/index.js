@@ -122,12 +122,12 @@ $(".owl-carousel").owlCarousel({
 });
 
 // search
-$("form").on("submit", function (e) {
+$(".header-input").on("submit", function (e) {
   e.preventDefault();
-  window.location.href = "/product.html?search=" + $("input").val();
+  window.location.href = "/product.html?search=" + $(".header-input input").val();
 });
   // search ở menu mobile
-  $("form").on("submit", function (e) {
+  $(".input-hidden").on("submit", function (e) {
     e.preventDefault();
     window.location.href = "/product.html?search=" + $(".input-hidden input").val();
   });

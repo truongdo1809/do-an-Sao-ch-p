@@ -35,7 +35,7 @@ const displayCart = () => {
         <td>
             <input class="quantity-product" type="number" value="${
               product.quantity
-            }" min="1" max="61">
+            }" min="1" max="61" oninput="restrictAndDefault(this)">
         </td>
         <td>
             <span class="total-price">${(
@@ -114,6 +114,14 @@ cartContainer.addEventListener("click", function (event) {
     }
   }
 });
+
+// sự  kiện không cho phép xóa hết dữ liệu ô input
+function restrictAndDefault(inputElement) {
+  // Nếu ô input trống rỗng, đặt giá trị mặc định là 1
+  if (inputElement.value.trim() === "") {
+    inputElement.value = "1";
+  }
+}
 // search
 $("form").on("submit", function (e) {
   e.preventDefault();
