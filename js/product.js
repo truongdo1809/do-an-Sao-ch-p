@@ -37,11 +37,12 @@ $(".header-input").on("submit", function (e) {
 
     } catch (error) {
       
-      console.log(error ,"something wrong");
+      console.log(error ,"không thể tải dữ liệu");
     }
   }
   window.onload = function () {
     getApi3();
+    
   };
  
   // lọc theo type
@@ -126,6 +127,8 @@ $(".header-input").on("submit", function (e) {
       selectElement.value = selectedOption;
       const newURL = `https://api-products-tau.vercel.app/products?_sort=priceSale&_order=${sortOrder}`;
       await getApi2(newURL);
+      const navbarTitle = document.querySelector(".navbar-title .text2");
+      navbarTitle.textContent  = "SẢN PHẨM"
     });
   }
   updateNavbarTitle(type);
