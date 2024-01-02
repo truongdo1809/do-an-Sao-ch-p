@@ -60,6 +60,9 @@ $(".header-input").on("submit", function (e) {
       console.error("something wrong:", error);
     }
   };
+
+
+  // sắp xếp sản phẩm theo giá tiền
   const getApi2 = async (newURL) => {
     try {
       const response = await axios.get(newURL);
@@ -69,6 +72,10 @@ $(".header-input").on("submit", function (e) {
       console.error("something wrong:", error);
     }
   };
+
+
+
+
   let products = (data) => {
     const productsList = document.querySelector("#products");
     let HTML = ``;

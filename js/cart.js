@@ -3,7 +3,7 @@ $(document).ready(function () {
   function checkCartEmpty() {
     if ($("#cart-form").is(":empty")) {
       $(".cart-product").hide();
-      // $(".cart-sidebar").hide();
+   
       $(".cart-product").after(
         '<p class="cart-message">Chưa có sản phẩm nào trong giỏ hàng!</p>'
       );
@@ -58,6 +58,7 @@ const displayCart = () => {
     });
   });
 };
+//  cập nhật số lượng sản phẩm 
 const updateProductQuantity = (productId, newQuantity) => {
   const products = JSON.parse(localStorage.getItem("products")) || [];
   const productIndex = products.findIndex(
