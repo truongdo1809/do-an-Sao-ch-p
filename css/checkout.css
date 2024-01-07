@@ -171,6 +171,7 @@ p {
 /* header */
 /* menu-mobile */
 .menu-list-mobile {
+  overflow-y: auto;
   padding: 0;
   width: 300px;
   position: fixed;
