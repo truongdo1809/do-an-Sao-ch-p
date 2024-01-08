@@ -124,78 +124,95 @@ $(".owl-carousel").owlCarousel({
 // search
 $(".header-input").on("submit", function (e) {
   e.preventDefault();
-  window.location.href = "/product.html?search=" + $(".header-input input").val();
+  window.location.href =
+    "/product.html?search=" + $(".header-input input").val();
 });
-  // search ở menu mobile
-  $(".input-hidden").on("submit", function (e) {
-    e.preventDefault();
-    window.location.href = "/product.html?search=" + $(".input-hidden input").val();
-  });
+// search ở menu mobile
+$(".input-hidden").on("submit", function (e) {
+  e.preventDefault();
+  window.location.href =
+    "/product.html?search=" + $(".input-hidden input").val();
+});
 // menu mobile
 $(document).ready(function () {
-
-  $('.icon-right').click(function () {
-      $(this).hide().siblings('.icon-down').show().closest('ul').find('.menu-child1-mobile').slideUp();
+  $(".icon-right").click(function () {
+    $(this)
+      .hide()
+      .siblings(".icon-down")
+      .show()
+      .closest("ul")
+      .find(".menu-child1-mobile")
+      .slideUp();
   });
 
-
-  $('.icon-down').click(function () {
-      $(this).hide().siblings('.icon-right').show().closest('ul').find('.menu-child1-mobile').slideDown();
+  $(".icon-down").click(function () {
+    $(this)
+      .hide()
+      .siblings(".icon-right")
+      .show()
+      .closest("ul")
+      .find(".menu-child1-mobile")
+      .slideDown();
   });
 
-  $('.icon2-right').click(function () {
-    $(this).hide().siblings('.icon2-down').show().closest('ul').find('.menu-child3-mobile').slideUp();
-});
+  $(".icon2-right").click(function () {
+    $(this)
+      .hide()
+      .siblings(".icon2-down")
+      .show()
+      .closest("ul")
+      .find(".menu-child3-mobile")
+      .slideUp();
+  });
 
-
-$('.icon2-down').click(function () {
-    $(this).hide().siblings('.icon2-right').show().closest('ul').find('.menu-child3-mobile').slideDown();
+  $(".icon2-down").click(function () {
+    $(this)
+      .hide()
+      .siblings(".icon2-right")
+      .show()
+      .closest("ul")
+      .find(".menu-child3-mobile")
+      .slideDown();
+  });
 });
-});
-
 
 // ẩn hiện menu
 document.addEventListener("DOMContentLoaded", function () {
   const menuMobile = document.querySelector(".menu-list-mobile");
   const hiddenIcon = document.querySelector(".hidden-icon");
   const body = document.querySelector("body");
-  const iconHiddenMenu = document.querySelector(".icon-hidden-menu i")
-  iconHiddenMenu.addEventListener("click",function(){
-    if(menuMobile.style.display === "block"){
-      menuMobile.style.display = "none"
+  const iconHiddenMenu = document.querySelector(".icon-hidden-menu i");
+  iconHiddenMenu.addEventListener("click", function () {
+    if (menuMobile.style.display === "block") {
+      menuMobile.style.display = "none";
       document.querySelector(".body-index").style.marginLeft = "0";
       body.style.overflow = "";
-    }else{
-      menuMobile.style.display = "block"
+    } else {
+      menuMobile.style.display = "block";
       document.querySelector(".body-index").style.marginLeft = "300px";
       body.style.overflow = "hidden";
     }
-  })
+  });
   hiddenIcon.addEventListener("click", function () {
-      
-      if(menuMobile.style.display === "block"){
-        menuMobile.style.display = "none"
-        document.querySelector(".body-index").style.marginLeft = "0";
-        body.style.overflow = "";
-      }else{
-        menuMobile.style.display = "block"
-        document.querySelector(".body-index").style.marginLeft = "300px";
-        body.style.overflow = "hidden";
-   
-      }
+    if (menuMobile.style.display === "block") {
+      menuMobile.style.display = "none";
+      document.querySelector(".body-index").style.marginLeft = "0";
+      body.style.overflow = "";
+    } else {
+      menuMobile.style.display = "block";
+      document.querySelector(".body-index").style.marginLeft = "300px";
+      body.style.overflow = "hidden";
+    }
   });
 
   document.addEventListener("click", function (event) {
-      const isClickInsideMenu = menuMobile.contains(event.target);
-      const isClickOnHiddenIcon = hiddenIcon.contains(event.target);
+    const isClickInsideMenu = menuMobile.contains(event.target);
+    const isClickOnHiddenIcon = hiddenIcon.contains(event.target);
 
-      if (!isClickInsideMenu && !isClickOnHiddenIcon) {
-          menuMobile.style.display = "none";
-          document.querySelector(".body-index").style.marginLeft = "0"
-        body.style.overflow = "";
-          
-      }
+    if (!isClickInsideMenu && !isClickOnHiddenIcon) {
+      menuMobile.style.display = "none";
+      document.querySelector(".body-index").style.marginLeft = "0";
+      body.style.overflow = "";
+    }
   });
-  
 });
-
