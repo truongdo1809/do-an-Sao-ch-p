@@ -72,10 +72,6 @@ $(".header-input").on("submit", function (e) {
       console.error("something wrong:", error);
     }
   };
-
-
-
-
   let products = (data) => {
     const productsList = document.querySelector("#products");
     let HTML = ``;

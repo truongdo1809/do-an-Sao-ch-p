@@ -104,3 +104,13 @@ document.addEventListener("DOMContentLoaded", function () {
   
 });
 
+const loginBtn = document.querySelector(".login-btn")
+loginBtn.addEventListener("click",()=>{
+  window.location.href="/index.html"
+  alert("bạn đã đăng nhập thành công")
+})
+const registerBtn = document.querySelector(".register-btn")
+registerBtn.addEventListener("click",()=>{
+  window.location.href="/login.html"
+  alert("bạn đã đăng ký thành công")
+})
